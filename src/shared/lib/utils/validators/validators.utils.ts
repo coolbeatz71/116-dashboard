@@ -18,7 +18,7 @@ interface IMinMax {
  * @description
  * Provides reusable validation rules with French error messages.
  */
-export const ValidationUtils = {
+export const ValidatorUtils = {
     /**
      * Creates a required field validation rule.
      *
@@ -55,5 +55,33 @@ export const ValidationUtils = {
             ...rule,
             message: `${name} doit contenir entre ${len.min} et ${len.max} caractères`
         };
-    }
+    },
+
+    /**
+     * Creates an email validation rule.
+     *
+     * @param {string} name - Field display name for error message
+     * @returns {Rule} Ant Design validation rule
+     *
+     * @remarks
+     * Validates that the input is a valid email format
+     */
+    email: (name: string): Rule => ({
+        type: "email",
+        message: `${name} a un format invalide`
+    }),
+
+    /**
+     * Creates a numeric-only validation rule.
+     *
+     * @param {string} name - Field display name for error message
+     * @returns {Rule} Ant Design validation rule
+     *
+     * @remarks
+     * Validates that the input contains only numbers
+     */
+    numericOnly: (name: string): Rule => ({
+        pattern: /^[0-9]+$/,
+        message: `${name} doit contenir uniquement des chiffres`
+    })
 } as const;

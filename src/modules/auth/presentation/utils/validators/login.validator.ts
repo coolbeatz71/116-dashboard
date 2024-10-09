@@ -1,5 +1,5 @@
 import type { Rule } from "antd/es/form";
-import { ValidationUtils } from "@/shared/lib/utils/validators/validation.utils";
+import { ValidatorUtils } from "@/shared/lib/utils/validators/validators.utils";
 
 /**
  * Validation rules for login form fields.
@@ -24,13 +24,7 @@ export const LoginValidator = {
      * - Required field
      * - Must be valid email format
      */
-    email: (name: string): Rule[] => [
-        ValidationUtils.required(name),
-        {
-            type: "email",
-            message: `${name} a un format invalide`
-        }
-    ],
+    email: (name: string): Rule[] => [ValidatorUtils.required(name), ValidatorUtils.email(name)],
 
     /**
      * Validation rules for password field.
@@ -47,7 +41,7 @@ export const LoginValidator = {
      * - At least 1 digit (0-9)
      */
     password: (name: string): Rule[] => [
-        ValidationUtils.required(name),
+        ValidatorUtils.required(name),
         {
             pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[\s\S]{6,}$/,
             message: `${name} doit avoir au moins 6 caractères et contenir 1 majuscule, 1 minuscule, 1 chiffre`

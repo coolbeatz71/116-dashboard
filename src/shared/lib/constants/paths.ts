@@ -30,6 +30,7 @@
  */
 
 export const LOGIN_PATH = "/";
+export const FORGOT_PASSWORD_PATH = "/forgot-password";
 export const DASHBOARD_PATH = "/dashboard";
 export const SETTING_PATH = "/settings";
 export const CONTENT_PATH = "/contents";

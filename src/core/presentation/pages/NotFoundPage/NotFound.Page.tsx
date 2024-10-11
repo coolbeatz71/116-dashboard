@@ -25,7 +25,7 @@ const { Title } = Typography;
  * - Navigation button to return to dashboard
  * - SEO-optimized page title
  *
- * @returns - The 404 not found page
+ * @returns The 404 not found page
  */
 export const NotFoundPage: FC = () => {
     const lottieOptions = LottieUtils.options(notFound);

@@ -44,6 +44,7 @@ export { default as IconLoadingOutlined } from "@ant-design/icons/LoadingOutline
 export { default as IconLockOutlined } from "@ant-design/icons/LockOutlined";
 export { default as IconLoginOutlined } from "@ant-design/icons/LoginOutlined";
 export { default as IconLogoutOutlined } from "@ant-design/icons/LogoutOutlined";
+export { default as IconMailOutlined } from "@ant-design/icons/MailOutlined";
 export { default as IconMenuOutlined } from "@ant-design/icons/MenuOutlined";
 export { default as IconMenuUnfoldOutlined } from "@ant-design/icons/MenuUnfoldOutlined";
 export { default as IconPlayCircleTwoTone } from "@ant-design/icons/PlayCircleTwoTone";

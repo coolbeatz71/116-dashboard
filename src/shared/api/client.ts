@@ -2,11 +2,11 @@ import type { AxiosError, AxiosResponse } from "axios";
 import { persistor } from "@/core/presentation/store/store";
 import { authErrors } from "@/modules/auth/infrastructure/constants/api";
 import { AuthStorageService } from "@/modules/auth/infrastructure/storage/authstorage.service";
+import { Api } from "@/shared/api/generated/116.api";
+import type { IApiProblemDetails } from "@/shared/api/type";
+import { apiErrors } from "@/shared/lib/constants/api";
 import { API_URL, isServer } from "@/shared/lib/constants/common";
 import { LOGIN_PATH } from "@/shared/lib/constants/paths";
-import { apiErrors } from "../lib/constants/api";
-import { Api } from "./generated/116.api";
-import type { IApiProblemDetails } from "./type";
 
 const { clearAuth, getToken, getUser } = AuthStorageService;
 
@@ -52,6 +52,7 @@ const errorHandler = async (error: AxiosError<IApiProblemDetails>): Promise<neve
     if (error.response) {
         const problemDetails = error.response.data;
 
+        // logout and redirect to login on authentication/authorization errors
         if (
             problemDetails.title &&
             authErrors.includes(problemDetails.title as (typeof authErrors)[number])

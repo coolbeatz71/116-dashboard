@@ -59,8 +59,10 @@ export const Theme: ThemeConfig = {
             bodyBg: Colors.Background
         },
         Button: {
+            paddingContentVertical: 32,
             paddingContentHorizontal: 32,
-            paddingContentVertical: 32
+            colorText: Colors.BrandSecondary,
+            fontWeight: 500
         },
         Form: {
             labelColor: `${Colors.BrandBackgroundDark}b3`,

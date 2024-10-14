@@ -5,7 +5,7 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const apiFilePath = join(__dirname, '../src/shared/api/generated/116Api.ts');
+const apiFilePath = join(__dirname, '../src/shared/api/generated/116.api.ts');
 
 const swaggerUrl = 'http://localhost:5025/swagger/v1/swagger.json';
 const swaggerResponse = await fetch(swaggerUrl);

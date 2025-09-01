@@ -1,0 +1,37 @@
+{
+    "name": "116-dashboard",
+    "version": "0.1.0",
+    "private": true,
+    "repository": "git@github.com:coolbeatz71/116-dashboard.git",
+    "author": "coolbeatz71 <sigmacool@gmail.com>",
+    "type": "module",
+    "scripts": {
+        "dev": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start",
+        "type:check": "tsc",
+        "lint:code": "biome lint --no-errors-on-unmatched",
+        "lint:code:fix": "biome check --write",
+        "lint:types": "tsc --noEmit",
+        "analyze": "cross-env ANALYZE=true next build",
+        "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+        "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "next": "15.4.7",
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+        "sass": "^1.90.0"
+},
+    "devDependencies": {
+        "@biomejs/biome": "2.2.0",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "husky": "^9.1.7",
+        "lint-staged": "^16.1.5",
+        "typescript": "^5"
+    },
+    "packageManager": "yarn@4.9.2"
+}

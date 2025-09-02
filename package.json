@@ -14,6 +14,8 @@
         "lint:types": "tsc --noEmit"
     },
     "dependencies": {
+        "antd": "^5.27.2",
+        "antd-style": "^3.7.1",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "sass": "^1.92.0"

@@ -2,11 +2,27 @@ import { Button, ConfigProvider, Flex } from "antd";
 import { useResponsive } from "antd-style";
 import type React from "react";
 
+import "@ant-design/v5-patch-for-react-19";
+
 const App: React.FC = () => {
     const { xxl } = useResponsive();
 
     return (
-        <ConfigProvider componentSize={xxl ? "middle" : "small"}>
+        <ConfigProvider
+            componentSize={xxl ? "middle" : "small"}
+            theme={{
+                components: {
+                    Button: {
+                        colorPrimary: "#00b96b",
+                        algorithm: true // Enable algorithm
+                    },
+                    Input: {
+                        colorPrimary: "#eb2f96",
+                        algorithm: true // Enable algorithm
+                    }
+                }
+            }}
+        >
             <Flex
                 justify="center"
                 align="center"

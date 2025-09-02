@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "arcanis.vscode-zipfs",
+        "DavidAnson.vscode-markdownlint",
+        "biomejs.biome"
+    ]
+}

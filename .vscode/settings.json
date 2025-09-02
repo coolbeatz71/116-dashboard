@@ -25,5 +25,8 @@
         "editor.defaultFormatter": "biomejs.biome"
     },
     "editor.defaultFormatter": "biomejs.biome",
-    "editor.wordWrap": "off"
+    "editor.wordWrap": "off",
+    "files.exclude": {
+        "**/.git": false
+    }
 }

@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# editor
+.DS_Store
+
 # local env files
 .env
 .env.local

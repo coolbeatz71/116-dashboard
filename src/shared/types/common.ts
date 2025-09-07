@@ -1,3 +1,3 @@
 export interface IUnknownObject {
-    [key: string]: any;
+    [key: string]: unknown | IUnknownObject;
 }

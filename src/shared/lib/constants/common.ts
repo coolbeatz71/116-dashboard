@@ -1,6 +1,5 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // PUBLIC ENVIRONMENT VARIABLES (Safe for client-side exposure)
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // External APIs - Public Configuration
 export const IMAGES_API_URL = import.meta.env.VITE_CLOUDINARY_URL as string;
@@ -17,7 +16,7 @@ export const DEV_URL = import.meta.env.VITE_FRONTEND_DEVELOPMENT_URL;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // SECURITY WARNING: MOVE TO SERVER-SIDE ONLY
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 // These variables contain sensitive data and should NOT be exposed to clients.
 // Remove VITE_ prefix and move to server-side API endpoints.
 
@@ -27,7 +26,6 @@ export const CRYPTO_PASSPHASE = import.meta.env.VITE_CRYPTO_PASSPHASE;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // APPLICATION CONSTANTS (Static configuration)
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // App Identity
 export const APP_NAME = "116";

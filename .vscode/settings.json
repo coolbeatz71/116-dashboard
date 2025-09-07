@@ -28,5 +28,10 @@
         "editor.defaultFormatter": "biomejs.biome"
     },
     "editor.defaultFormatter": "biomejs.biome",
-    "editor.wordWrap": "off"
+    "editor.wordWrap": "off",
+    "cSpell.words": [
+        "barprogress",
+        "fadein",
+        "nprogress"
+    ]
 }

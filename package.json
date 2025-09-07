@@ -11,9 +11,13 @@
         "preview": "vite preview",
         "lint:code": "biome lint --no-errors-on-unmatched",
         "lint:code:fix": "biome check --write",
-        "lint:types": "tsc --noEmit"
+        "lint:types": "tsc --noEmit",
+        "api:generate": "yarn dlx swagger-typescript-api generate -p http://localhost:5025/swagger/v1/swagger.json -o ./src/shared/api/generated/ -n 116Api.ts --responses"
     },
     "dependencies": {
+        "@ant-design/v5-patch-for-react-19": "^1.0.3",
+        "antd": "^5.27.2",
+        "antd-style": "^3.7.1",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
         "sass": "^1.92.0"
@@ -28,5 +32,6 @@
         "lint-staged": "^16.1.5",
         "typescript": "~5.9.2",
         "vite": "^7.1.4"
-    }
+    },
+    "packageManager": "yarn@4.9.4"
 }

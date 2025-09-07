@@ -6,9 +6,9 @@
         "indentStyle": "space",
         "indentWidth": 4,
         "lineEnding": "lf",
-        "lineWidth": 80,
+        "lineWidth": 120,
         "attributePosition": "auto",
-        "includes": ["**", "**/src/**", "!**/src/shared/api/client.ts"]
+        "includes": ["**", "**/src/**", "!**/src/shared/api/generated/116Api.ts"]
     },
     "assist": {
         "actions": {
@@ -31,7 +31,7 @@
                 "noUnusedLabels": "error"
             }
         },
-        "includes": ["**", "**/src/**", "!**/src/shared/api/client.ts"]
+        "includes": ["**", "**/src/**", "!**/src/shared/api/generated/116Api.ts"]
     },
     "javascript": {
         "formatter": {

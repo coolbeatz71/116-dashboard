@@ -5,8 +5,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { type FC, Suspense, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthLayoutLoading } from "@/core/presentation/layouts/AuthLayout/AuthLayout.Loading";
+import { NotFoundPage } from "@/core/presentation/pages/NotFoundPage/NotFound.Page";
+import { LoginPage } from "@/modules/auth/presentation/pages/LoginPage/Login.Page";
 import { LOGIN_PATH } from "@/shared/lib/constants/paths";
-import { NotFoundPage } from "./core/presentation/pages/NotFoundPage/NotFound.Page";
 
 const App: FC = () => {
     useEffect(() => {
@@ -36,7 +37,7 @@ const App: FC = () => {
                 <Suspense fallback={<AuthLayoutLoading />}>
                     <Routes>
                         <Route path="*" element={<NotFoundPage />} />
-                        <Route path={LOGIN_PATH} element={<div>login page here</div>} />
+                        <Route path={LOGIN_PATH} element={<LoginPage />} />
                     </Routes>
                 </Suspense>
             </BrowserRouter>

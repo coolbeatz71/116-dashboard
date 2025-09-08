@@ -33,6 +33,7 @@
     },
     "editor.wordWrap": "off",
     "cSpell.words": [
+        "anticon",
         "barprogress",
         "caractères",
         "chiffre",
@@ -40,9 +41,12 @@
         "fadein",
         "introuvable",
         "invalide",
+        "l'Accueil",
         "moins",
         "nprogress",
         "obligatoire",
-        "PASSPHASE"
+        "PASSPHASE",
+        "Retour",
+        "trouvée"
     ]
 }

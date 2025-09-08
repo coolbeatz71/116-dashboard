@@ -6,22 +6,37 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
     padding: dimensions.$padding;
 
     [data-text='title'] {
-        font-size: 35pt;
+        font-size: 32pt;
+        
+        @include mixins.mediaMaxMD {
+            font-size: 18pt;
+        }
+
     }
 
     a {
         text-decoration: none;
     }
 
-    // @include mixins.mediaXL {
-    //     &__lottie{
-    //         padding: dimensions.$padding;
-    //         width: 512px;
-    //         height: 512px;
-    //     }
-    // }
+    &__lottie{
+        padding: dimensions.$padding;
+
+        @include mixins.mediaLG {
+            width: 24rem;
+            height: 24rem;
+        }
+
+        @include mixins.mediaXL {
+            width: 24rem;
+            height: 24rem;
+        }
+        
+        @include mixins.mediaXXL {
+            width: 36rem;
+            height: 36rem;
+        }
+    }
 }

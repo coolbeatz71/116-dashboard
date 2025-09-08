@@ -1,156 +1,45 @@
-import { Button, ConfigProvider, Flex } from "antd";
-import { useResponsive } from "antd-style";
-import type React from "react";
+import { ConfigProvider } from "antd";
+import dayjs from "dayjs";
+import fr from "dayjs/locale/fr";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { type FC, Suspense, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthLayoutLoading } from "@/core/presentation/layouts/AuthLayout/AuthLayout.Loading";
+import { LOGIN_PATH } from "@/shared/lib/constants/paths";
+import { NotFoundPage } from "./core/presentation/pages/NotFoundPage/NotFound.Page";
 
-import "@ant-design/v5-patch-for-react-19";
-
-const App: React.FC = () => {
-    const { xxl } = useResponsive();
+const App: FC = () => {
+    useEffect(() => {
+        dayjs.locale(fr);
+        dayjs.extend(relativeTime);
+    }, []);
 
     return (
         <ConfigProvider
-            componentSize={xxl ? "middle" : "small"}
             theme={{
+                token: {
+                    colorPrimary: "#490fd2",
+                    colorSuccess: "#1dd3b0",
+                    colorError: "#ef476f",
+                    colorWarning: "#f07f34",
+                    borderRadius: 8
+                },
                 components: {
                     Button: {
-                        colorPrimary: "#00b96b",
-                        algorithm: true // Enable algorithm
-                    },
-                    Input: {
-                        colorPrimary: "#eb2f96",
-                        algorithm: true // Enable algorithm
+                        paddingContentHorizontal: 32,
+                        paddingContentVertical: 32
                     }
                 }
             }}
         >
-            <Flex
-                justify="center"
-                align="center"
-                style={{ minHeight: "100vh" }}
-            >
-                <Flex vertical gap="small">
-                    <Flex gap="small" wrap>
-                        <Button color="default" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="default" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="default" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="default" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="default" variant="text">
-                            Text
-                        </Button>
-                        <Button color="default" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                    <Flex gap="small" wrap>
-                        <Button color="primary" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="primary" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="primary" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="primary" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="primary" variant="text">
-                            Text
-                        </Button>
-                        <Button color="primary" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                    <Flex gap="small" wrap>
-                        <Button color="danger" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="danger" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="danger" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="danger" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="danger" variant="text">
-                            Text
-                        </Button>
-                        <Button color="danger" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                    <Flex gap="small" wrap>
-                        <Button color="pink" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="pink" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="pink" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="pink" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="pink" variant="text">
-                            Text
-                        </Button>
-                        <Button color="pink" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                    <Flex gap="small" wrap>
-                        <Button color="purple" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="purple" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="purple" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="purple" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="purple" variant="text">
-                            Text
-                        </Button>
-                        <Button color="purple" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                    <Flex gap="small" wrap>
-                        <Button color="cyan" variant="solid">
-                            Solid
-                        </Button>
-                        <Button color="cyan" variant="outlined">
-                            Outlined
-                        </Button>
-                        <Button color="cyan" variant="dashed">
-                            Dashed
-                        </Button>
-                        <Button color="cyan" variant="filled">
-                            Filled
-                        </Button>
-                        <Button color="cyan" variant="text">
-                            Text
-                        </Button>
-                        <Button color="cyan" variant="link">
-                            Link
-                        </Button>
-                    </Flex>
-                </Flex>
-            </Flex>
+            <BrowserRouter>
+                <Suspense fallback={<AuthLayoutLoading />}>
+                    <Routes>
+                        <Route path="*" element={<NotFoundPage />} />
+                        <Route path={LOGIN_PATH} element={<div>login page here</div>} />
+                    </Routes>
+                </Suspense>
+            </BrowserRouter>
         </ConfigProvider>
     );
 };

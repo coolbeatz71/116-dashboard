@@ -28,11 +28,28 @@
         "editor.defaultFormatter": "biomejs.biome"
     },
     "editor.defaultFormatter": "biomejs.biome",
+    "files.associations": {
+        "**/src/assets/lottie/*.json": "plaintext"
+    },
     "editor.wordWrap": "off",
     "cSpell.words": [
+        "anticon",
         "barprogress",
+        "caractères",
+        "chiffre",
+        "contenir",
+        "dotlottie",
         "fadein",
+        "introuvable",
+        "invalide",
+        "l'Accueil",
+        "lottiefiles",
+        "moins",
         "nprogress",
-        "PASSPHASE"
+        "obligatoire",
+        "PASSPHASE",
+        "Retour",
+        "trouvée",
+        "TTFB"
     ]
 }

@@ -1,12 +1,13 @@
-@import "./../../../../shared/styles/dimensions.scss";
+@use "@/shared/styles/dimensions.scss" as dimensions;
+@use "@/shared/styles/mixins.scss" as mixins;
 
 .notFound {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    height: 100vh;
 
-    padding: $padding;
+    padding: dimensions.$padding;
 
     [data-text='title'] {
         font-size: 35pt;
@@ -16,14 +17,11 @@
         text-decoration: none;
     }
 
-    [class~='ant-btn'] {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 $padding;
-
-        [class~='anticon'] {
-            margin-bottom: 0.3rem;
-        }
-    }
+    // @include mixins.mediaXL {
+    //     &__lottie{
+    //         padding: dimensions.$padding;
+    //         width: 512px;
+    //         height: 512px;
+    //     }
+    // }
 }

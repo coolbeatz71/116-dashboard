@@ -11,6 +11,7 @@ __metadata:
   dependencies:
     "@ant-design/v5-patch-for-react-19": "npm:^1.0.3"
     "@biomejs/biome": "npm:2.2.0"
+    "@lottiefiles/dotlottie-react": "npm:^0.15.2"
     "@types/node": "npm:^24.3.0"
     "@types/react": "npm:^19.1.12"
     "@types/react-dom": "npm:^19.1.7"
@@ -24,9 +25,11 @@ __metadata:
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     react-helmet-async: "npm:^2.0.5"
+    react-router-dom: "npm:^7.8.2"
     sass: "npm:^1.92.0"
     typescript: "npm:~5.9.2"
     vite: "npm:^7.1.4"
+    web-vitals: "npm:^5.1.0"
   languageName: unknown
   linkType: soft
 
@@ -709,6 +712,24 @@ __metadata:
     "@jridgewell/resolve-uri": "npm:^3.1.0"
     "@jridgewell/sourcemap-codec": "npm:^1.4.14"
   checksum: 10c0/3a1516c10f44613b9ba27c37a02ff8f410893776b2b3dad20a391b51b884dd60f97bbb56936d65d2ff8fe978510a0000266654ab8426bdb9ceb5fb4585b19e23
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-react@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "@lottiefiles/dotlottie-react@npm:0.15.2"
+  dependencies:
+    "@lottiefiles/dotlottie-web": "npm:0.50.2"
+  peerDependencies:
+    react: ^17 || ^18 || ^19
+  checksum: 10c0/afa716417d24c6ba9a82b2c544c41e393cff7891b30b6a0691ad9389c24936c74a1a74227d8f31a750b42f97f0ac38d8d7ed460b64f1b7ab938b31f0bc273985
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-web@npm:0.50.2":
+  version: 0.50.2
+  resolution: "@lottiefiles/dotlottie-web@npm:0.50.2"
+  checksum: 10c0/0af4a6c6dcba78e8e9415b0a364d28d58af956fb81c8dd3ca328ecfdfa516910b8e3a25827f38a5bbf93af0eb8415386476fb79f32fc7910b3a8b12694121e3f
   languageName: node
   linkType: hard
 
@@ -1639,6 +1660,13 @@ __metadata:
   version: 1.9.0
   resolution: "convert-source-map@npm:1.9.0"
   checksum: 10c0/281da55454bf8126cbc6625385928c43479f2060984180c42f3a86c8b8c12720a24eac260624a7d1e090004028d2dee78602330578ceec1a08e27cb8bb0a8a5b
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^1.0.1":
+  version: 1.0.2
+  resolution: "cookie@npm:1.0.2"
+  checksum: 10c0/fd25fe79e8fbcfcaf6aa61cd081c55d144eeeba755206c058682257cb38c4bd6795c6620de3f064c740695bb65b7949ebb1db7a95e4636efb8357a335ad3f54b
   languageName: node
   linkType: hard
 
@@ -3222,6 +3250,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^7.8.2":
+  version: 7.8.2
+  resolution: "react-router-dom@npm:7.8.2"
+  dependencies:
+    react-router: "npm:7.8.2"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  checksum: 10c0/b285182ffa1b26df5025f6e7952edca066928d5688d3447b02e4a7e699ca16941e8a42ecad65ab505914e27fed04a2023c92ae3ebf838226b4381a2e3a69ae01
+  languageName: node
+  linkType: hard
+
+"react-router@npm:7.8.2":
+  version: 7.8.2
+  resolution: "react-router@npm:7.8.2"
+  dependencies:
+    cookie: "npm:^1.0.1"
+    set-cookie-parser: "npm:^2.6.0"
+  peerDependencies:
+    react: ">=18"
+    react-dom: ">=18"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 10c0/e3122c2949bcad5e9c990cfb88e9cbd139e5a2a5c1d29664732623907a488634c0ddbf673d07af8f113d418f66270c174f014de8b885996722f431d09f5734be
+  languageName: node
+  linkType: hard
+
 "react@npm:^19.1.1":
   version: 19.1.1
   resolution: "react@npm:19.1.1"
@@ -3424,6 +3480,13 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: 10c0/aca305edfbf2383c22571cb7714f48cadc7ac95371b4b52362fb8eeffdfbc0de0669368b82b2b15978f8848f01d7114da65697e56cd8c37b0dab8c58e543f9ea
+  languageName: node
+  linkType: hard
+
+"set-cookie-parser@npm:^2.6.0":
+  version: 2.7.1
+  resolution: "set-cookie-parser@npm:2.7.1"
+  checksum: 10c0/060c198c4c92547ac15988256f445eae523f57f2ceefeccf52d30d75dedf6bff22b9c26f756bd44e8e560d44ff4ab2130b178bd2e52ef5571bf7be3bd7632d9a
   languageName: node
   linkType: hard
 
@@ -3777,6 +3840,13 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 10c0/dbe2ba29926ffe8985c93d1b3718dcc9040080b7fa10a74c82a52aad7449136a391ba17b265288ff03b864e6f1033b9b537247521a96d5491a9d4af90ac04702
+  languageName: node
+  linkType: hard
+
+"web-vitals@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "web-vitals@npm:5.1.0"
+  checksum: 10c0/1af22ddbe2836ba880fcb492cfba24c3349f4760ebb5e92f38324ea67bca3c4dbb9c86f1a32af4795b6115cdaf98b90000cf3a7402bffef6e8c503f0d1b2e706
   languageName: node
   linkType: hard
 

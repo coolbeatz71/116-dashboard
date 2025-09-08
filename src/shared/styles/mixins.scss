@@ -1,4 +1,4 @@
-@import 'dimensions.scss';
+@use 'dimensions.scss' as *;
 
 @mixin mediaXS {
     @media (max-width: $sm-size) {

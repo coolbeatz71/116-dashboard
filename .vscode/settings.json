@@ -38,15 +38,18 @@
         "caractères",
         "chiffre",
         "contenir",
+        "dotlottie",
         "fadein",
         "introuvable",
         "invalide",
         "l'Accueil",
+        "lottiefiles",
         "moins",
         "nprogress",
         "obligatoire",
         "PASSPHASE",
         "Retour",
-        "trouvée"
+        "trouvée",
+        "TTFB"
     ]
 }

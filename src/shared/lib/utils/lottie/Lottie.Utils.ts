@@ -1,13 +1,9 @@
-import type { LottieOptions } from "lottie-react";
-import type { IUnknownObject } from "@/shared/lib/types/common";
+import type { DotLottieReactProps } from "@lottiefiles/dotlottie-react";
 
 export const LottieUtils = {
-    options: (animationData: IUnknownObject): LottieOptions => ({
+    options: (animationPath: string): DotLottieReactProps => ({
         loop: true,
         autoplay: true,
-        animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
+        src: animationPath
     })
 };

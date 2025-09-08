@@ -28,6 +28,9 @@
         "editor.defaultFormatter": "biomejs.biome"
     },
     "editor.defaultFormatter": "biomejs.biome",
+    "files.associations": {
+        "**/src/assets/lottie/*.json": "plaintext"
+    },
     "editor.wordWrap": "off",
     "cSpell.words": [
         "barprogress",

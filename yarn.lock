@@ -14,11 +14,13 @@ __metadata:
     "@types/node": "npm:^24.3.0"
     "@types/react": "npm:^19.1.12"
     "@types/react-dom": "npm:^19.1.7"
+    "@types/react-lottie": "npm:^1"
     "@vitejs/plugin-react-swc": "npm:^4.0.1"
-    antd: "npm:^5.27.2"
+    antd: "npm:^5.27.3"
     antd-style: "npm:^3.7.1"
     globals: "npm:^16.3.0"
     lint-staged: "npm:^16.1.5"
+    lottie-react: "npm:^2.4.1"
     react: "npm:^19.1.1"
     react-dom: "npm:^19.1.1"
     sass: "npm:^1.92.0"
@@ -1321,7 +1323,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.1.12":
+"@types/react-lottie@npm:^1":
+  version: 1.2.10
+  resolution: "@types/react-lottie@npm:1.2.10"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/c0b71c534a8f6e7540a620bfeb98264217a66db1f886f499a49e5bd39960fbc0897d9c5475e575d29ebb225b50bf51f6032053a51a1d3e919396a322e7f183b1
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*, @types/react@npm:^19.1.12":
   version: 19.1.12
   resolution: "@types/react@npm:19.1.12"
   dependencies:
@@ -1414,7 +1425,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"antd@npm:^5.27.2":
+"antd@npm:^5.27.3":
   version: 5.27.3
   resolution: "antd@npm:5.27.3"
   dependencies:
@@ -2249,6 +2260,25 @@ __metadata:
     strip-ansi: "npm:^7.1.0"
     wrap-ansi: "npm:^9.0.0"
   checksum: 10c0/4b350c0a83d7753fea34dcac6cd797d1dc9603291565de009baa4aa91c0447eab0d3815a05c8ec9ac04fdfffb43c82adcdb03ec1fceafd8518e1a8c1cff4ff89
+  languageName: node
+  linkType: hard
+
+"lottie-react@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "lottie-react@npm:2.4.1"
+  dependencies:
+    lottie-web: "npm:^5.10.2"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10c0/7f6a0a2cf2af25deabe7b4d4c9917e47d12016673613c59dcdd8ef52e10e914dd0c1f71d4a275d56aaba03fe9d85b333087f7c8d40a8f967ece4a0444c7a3cdf
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.10.2":
+  version: 5.13.0
+  resolution: "lottie-web@npm:5.13.0"
+  checksum: 10c0/b463ad462169df3f7e04b7f3716274e269842554f1d72b8303ca7245628f2512982a59ae31698b3d57fbcda886228ae160fcb2aa518c6cecd8a95974db2458ee
   languageName: node
   linkType: hard
 

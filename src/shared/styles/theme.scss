@@ -1,16 +1,5 @@
 @use 'colors.scss' as colors;
 @use 'dimensions.scss' as dimensions;
-@use 'fonts.scss';
-
-body {
-    padding: 0;
-    margin: 0;
-    background: colors.$background !important;
-}
-
-[data-content-padding] {
-    padding: calc(#{dimensions.$content-padding} / 2) 0;
-}
 
 [class~='text-error'] [class~='ant-layout-header'] {
     background: colors.$white;

@@ -2,27 +2,19 @@
 @use 'dimensions.scss' as dimensions;
 @use 'fonts.scss';
 
-* {
-    font-family: 'Montserrat', sans-serif;
-}
-
 body {
     padding: 0;
     margin: 0;
     background: colors.$background !important;
 }
 
+[data-content-padding] {
+    padding: calc(#{dimensions.$content-padding} / 2) 0;
+}
+
 [class~='text-error'] [class~='ant-layout-header'] {
     background: colors.$white;
     padding: 0 dimensions.$padding;
-}
-
-[class~='ant-layout'] {
-    background: colors.$white;
-}
-
-[data-content-padding] {
-    padding: calc(#{dimensions.$content-padding} / 2) 0;
 }
 
 [class~='anticon'] {
@@ -36,7 +28,6 @@ body {
 
 [class~='ant-select-selection-placeholder'] {
     font-size: 14px;
-    // color: $dark30 !important;
 }
 [class~='ant-picker-large'] {
     padding: 10px 11px 10px !important;
@@ -74,10 +65,6 @@ body {
     }
 }
 
-[class~='ant-select-lg'] {
-    font-size: 14px !important;
-}
-
 [class~='ant-input-lg'],
 [class~='ant-picker-large'] {
     width: 100%;
@@ -92,8 +79,6 @@ body {
         flex-flow: row-reverse;
         justify-content: flex-end;
         font-weight: 500;
-        height: 0 !important;
-        font-size: 12px !important;
         &::before {
             padding-left: 4px;
         }
@@ -127,10 +112,13 @@ input {
     }
 }
 
-[class~='ant-form-item-explain-error'] {
-    font-size: 12px;
+[class~="ant-form-item-additional"]{
     margin-top: 0.2rem;
     margin-bottom: 1rem;
+
+    [class~='ant-form-item-explain-error'] {
+        font-size: 12px;
+    }
 }
 
 [class~='ant-modal-footer'],

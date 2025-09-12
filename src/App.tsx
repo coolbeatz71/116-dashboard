@@ -8,6 +8,7 @@ import { AuthLayoutLoading } from "@/core/presentation/layouts/AuthLayout/AuthLa
 import { NotFoundPage } from "@/core/presentation/pages/NotFoundPage/NotFound.Page";
 import { LoginPage } from "@/modules/auth/presentation/pages/LoginPage/Login.Page";
 import { LOGIN_PATH } from "@/shared/lib/constants/paths";
+import { Theme } from "@/shared/lib/constants/theme";
 
 const App: FC = () => {
     useEffect(() => {
@@ -16,27 +17,7 @@ const App: FC = () => {
     }, []);
 
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: "#490fd2",
-                    colorSuccess: "#1dd3b0",
-                    colorError: "#ef476f",
-                    colorWarning: "#f07f34",
-                    borderRadius: 6
-                },
-                components: {
-                    Button: {
-                        paddingContentHorizontal: 32,
-                        paddingContentVertical: 32
-                    },
-                    Form: {
-                        labelColor: "rgba(52, 56, 77, 0.65)",
-                        labelRequiredMarkColor: "#ef476f"
-                    }
-                }
-            }}
-        >
+        <ConfigProvider theme={Theme}>
             <BrowserRouter>
                 <Suspense fallback={<AuthLayoutLoading />}>
                     <Routes>

@@ -12,6 +12,7 @@ export default defineConfig({
             "@/assets": path.resolve(__dirname, "./src/assets"),
             "@/core": path.resolve(__dirname, "./src/core"),
             "@/shared": path.resolve(__dirname, "./src/shared"),
+            "@/modules": path.resolve(__dirname, "./src/modules"),
         },
     },
 })

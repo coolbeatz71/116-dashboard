@@ -1,0 +1,33 @@
+@use "@/shared/styles/dimensions.scss" as dimensions;
+@use "@/shared/styles/colors.scss" as colors;
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    &__card {
+        width: 512px;
+        display: inline-block;
+        padding: dimensions.$padding * 1.8 0;
+        padding-top: 0;
+
+        [class~='ant-card-body'] {
+            padding: dimensions.$padding * 1.8;
+        }
+
+        &__logo {
+            margin: auto;
+            width: dimensions.$min-sidenav-width * 1.8;
+            height: dimensions.$min-sidenav-width * 1.8;
+
+            background-image: url('./../../../../../assets/logo/light_plain.svg');
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+}

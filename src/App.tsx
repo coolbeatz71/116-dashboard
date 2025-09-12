@@ -23,12 +23,16 @@ const App: FC = () => {
                     colorSuccess: "#1dd3b0",
                     colorError: "#ef476f",
                     colorWarning: "#f07f34",
-                    borderRadius: 8
+                    borderRadius: 6
                 },
                 components: {
                     Button: {
                         paddingContentHorizontal: 32,
                         paddingContentVertical: 32
+                    },
+                    Form: {
+                        labelColor: "rgba(52, 56, 77, 0.65)",
+                        labelRequiredMarkColor: "#ef476f"
                     }
                 }
             }}

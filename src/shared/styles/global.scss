@@ -1,24 +1,15 @@
 @use 'colors.scss' as colors;
 @use 'dimensions.scss' as dimensions;
-
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;300;400;500;700;900&display=swap');
+@use 'fonts.scss';
 
 * {
-    font-family: Open Sans;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     padding: 0;
     margin: 0;
     background: colors.$background !important;
-}
-
-[class~='ant-btn'] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 [class~='text-error'] [class~='ant-layout-header'] {
@@ -100,7 +91,6 @@ body {
         display: flex;
         flex-flow: row-reverse;
         justify-content: flex-end;
-
         font-weight: 500;
         height: 0 !important;
         font-size: 12px !important;
@@ -118,27 +108,22 @@ textarea,
 input {
     &::-webkit-input-placeholder {
         font-size: 14px;
-        // color: $dark30 !important;
     }
 
     &:-moz-placeholder {
         font-size: 14px;
-        // color: $dark30 !important;
     }
 
     &::-moz-placeholder {
         font-size: 14px;
-        // color: $dark30 !important;
     }
 
     &:-ms-input-placeholder {
         font-size: 14px;
-        // color: $dark30 !important;
     }
 
     &::placeholder {
         font-size: 14px;
-        // color: $dark30 !important;
     }
 }
 

@@ -11,7 +11,7 @@
     &__card {
         width: 512px;
         display: inline-block;
-        padding: dimensions.$padding * 2.5 0;
+        padding: dimensions.$padding * 1.8 0;
         padding-top: 0;
 
         [class~='ant-card-body'] {
@@ -20,10 +20,10 @@
 
         &__logo {
             margin: auto;
-            width: dimensions.$min-sidenav-width * 2;
-            height: dimensions.$min-sidenav-width * 2;
+            width: dimensions.$min-sidenav-width * 1.8;
+            height: dimensions.$min-sidenav-width * 1.8;
 
-            background-image: url('./../../../../../assets/logo/light.svg');
+            background-image: url('./../../../../../assets/logo/light_plain.svg');
 
             background-position: center;
             background-repeat: no-repeat;

@@ -6,13 +6,27 @@ import notFound from "@/assets/lottie/404_anim.lottie";
 import { IconHomeOutlined } from "@/shared/components/Icons/Icons";
 import { APP_NAME } from "@/shared/lib/constants/common";
 import { DASHBOARD_PATH } from "@/shared/lib/constants/paths";
-import { LottieUtils } from "@/shared/lib/utils/lottie/Lottie.Utils";
+import { LottieUtils } from "@/shared/lib/utils/lottie/lottie.utils";
 
 import styles from "./index.module.scss";
 
 const { Content } = Layout;
 const { Title } = Typography;
 
+/**
+ * 404 Not Found page component.
+ *
+ * @component
+ *
+ * @description
+ * Displays a user-friendly 404 error page with:
+ * - Animated 404 Lottie illustration
+ * - French error message
+ * - Navigation button to return to dashboard
+ * - SEO-optimized page title
+ *
+ * @returns - The 404 not found page
+ */
 export const NotFoundPage: FC = () => {
     const lottieOptions = LottieUtils.options(notFound);
 

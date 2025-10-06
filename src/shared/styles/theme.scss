@@ -1,16 +1,5 @@
 @use 'colors.scss' as colors;
 @use 'dimensions.scss' as dimensions;
-@use 'fonts.scss';
-
-body {
-    padding: 0;
-    margin: 0;
-    background: colors.$background !important;
-}
-
-[data-content-padding] {
-    padding: calc(#{dimensions.$content-padding} / 2) 0;
-}
 
 [class~='text-error'] [class~='ant-layout-header'] {
     background: colors.$white;
@@ -136,5 +125,48 @@ input {
 [class~='ant-input-affix-wrapper-lg'] {
     [class~='ant-input'] {
         padding: 2.5px !important;
+    }
+}
+
+[class~="ant-alert-error"]{
+    [class~='ant-alert-icon'] {
+        font-size: 15pt !important;
+    }
+
+    [class~='ant-alert-message'] {
+        font-weight: 500 !important;
+        color: colors.$description !important;
+    }
+}
+
+[class~='ant-alert-with-description'] {
+    align-items: center !important;
+
+    [class~='ant-alert-icon'] {
+        font-size: 36pt !important;
+    }
+
+    [class~='ant-alert-close-icon'] {
+        align-self: flex-start !important;
+    }
+
+    [class~='ant-alert-message'] {
+        font-weight: 500 !important;
+        margin-bottom: 0 !important;
+        color: colors.$title !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    [class~='ant-alert-description'] {
+        font-weight: 100 !important;
+        color: colors.$description !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
     }
 }

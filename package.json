@@ -12,30 +12,37 @@
         "lint:code": "biome lint --no-errors-on-unmatched",
         "lint:code:fix": "biome check --write",
         "lint:types": "tsc --noEmit",
-        "api:generate": "yarn dlx swagger-typescript-api generate -p http://localhost:5025/swagger/v1/swagger.json -o ./src/shared/api/generated/ -n 116Api.ts --responses"
+        "api:generate": "yarn dlx swagger-typescript-api generate -p http://localhost:5025/swagger/v1/swagger.json -o ./src/shared/api/generated/ -n 116.api.ts --axios --responses && node scripts/format-api-docs.js"
     },
     "dependencies": {
         "@ant-design/v5-patch-for-react-19": "^1.0.3",
-        "@lottiefiles/dotlottie-react": "^0.15.2",
-        "antd": "^5.27.3",
+        "@lottiefiles/dotlottie-react": "^0.17.4",
+        "@reduxjs/toolkit": "^2.9.0",
+        "antd": "^5.27.4",
         "antd-style": "^3.7.1",
-        "react": "^19.1.1",
-        "react-dom": "^19.1.1",
+        "axios": "^1.12.2",
+        "http-status": "^2.1.0",
+        "react": "^19.2.0",
+        "react-dom": "^19.2.0",
         "react-helmet-async": "^2.0.5",
-        "react-router-dom": "^7.8.2",
-        "sass": "^1.92.0",
+        "react-redux": "^9.2.0",
+        "react-router": "^7.9.3",
+        "redux-logger": "^4.0.0",
+        "redux-persist": "^6.0.0",
+        "sass": "^1.93.2",
         "web-vitals": "^5.1.0"
     },
     "devDependencies": {
-        "@biomejs/biome": "2.2.0",
-        "@types/node": "^24.3.0",
-        "@types/react": "^19.1.12",
-        "@types/react-dom": "^19.1.7",
-        "@vitejs/plugin-react-swc": "^4.0.1",
-        "globals": "^16.3.0",
-        "lint-staged": "^16.1.5",
-        "typescript": "~5.9.2",
-        "vite": "^7.1.4"
+        "@biomejs/biome": "^2.2.5",
+        "@types/node": "^24.6.2",
+        "@types/react": "^19.2.0",
+        "@types/react-dom": "^19.2.0",
+        "@types/redux-logger": "^3.0.13",
+        "@vitejs/plugin-react-swc": "^4.1.0",
+        "globals": "^16.4.0",
+        "lint-staged": "^16.2.3",
+        "typescript": "^5.9.3",
+        "vite": "^7.1.9"
     },
     "packageManager": "yarn@4.9.4"
 }

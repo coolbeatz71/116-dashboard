@@ -5,7 +5,18 @@ import { Logo } from "@/shared/components/Logo/Logo";
 
 import styles from "./index.module.scss";
 
-export const LoginPage: FC = () => {
+/**
+ * Login page component for admin authentication.
+ *
+ * @component
+ *
+ * @description
+ * Main login page displaying the application logo and login form
+ * in a centered card layout.
+ *
+ * @returns - The login page
+ */
+const LoginPage: FC = () => {
     return (
         <div className={styles.login}>
             <Card hoverable={false} variant="borderless" className={styles.login__card}>
@@ -15,3 +26,5 @@ export const LoginPage: FC = () => {
         </div>
     );
 };
+
+export default LoginPage;

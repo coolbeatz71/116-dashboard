@@ -1,0 +1,12 @@
+@use 'colors.scss' as colors;
+@use 'dimensions.scss' as dimensions;
+
+body {
+    margin: 0;
+    padding: 0;
+    background: colors.$background !important;
+}
+
+[data-content-padding] {
+    padding: calc(#{dimensions.$content-padding} / 2) 0;
+}

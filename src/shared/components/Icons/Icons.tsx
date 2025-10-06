@@ -1,3 +1,15 @@
+/**
+ * Centralized icon exports from Ant Design Icons.
+ *
+ * @description
+ * Re-exports commonly used Ant Design icons with a consistent naming convention.
+ * All icons are prefixed with "Icon" for easy identification and autocomplete.
+ *
+ * @remarks
+ * - Icons are imported from @ant-design/icons and tree-shaken
+ * - Use these exports instead of importing directly from @ant-design/icons
+ * - Naming pattern: Icon + IconName from Ant Design
+ */
 export { default as IconAndroidFilled } from "@ant-design/icons/AndroidFilled";
 export { default as IconAppleFilled } from "@ant-design/icons/AppleFilled";
 export { default as IconArrowLeftOutlined } from "@ant-design/icons/ArrowLeftOutlined";
@@ -8,6 +20,7 @@ export { default as IconCaretLeftOutlined } from "@ant-design/icons/CaretLeftOut
 export { default as IconCaretRightFilled } from "@ant-design/icons/CaretRightFilled";
 export { default as IconCaretRightOutlined } from "@ant-design/icons/CaretRightOutlined";
 export { default as IconClockCircleOutlined } from "@ant-design/icons/ClockCircleOutlined";
+export { default as IconCloseCircleFilled } from "@ant-design/icons/CloseCircleFilled";
 export { default as IconCloseCircleOutlined } from "@ant-design/icons/CloseCircleOutlined";
 export { default as IconCloseSquareOutlined } from "@ant-design/icons/CloseSquareOutlined";
 export { default as IconCommentOutlined } from "@ant-design/icons/CommentOutlined";

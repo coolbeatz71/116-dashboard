@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import reportWebVitals from "./reportWebVitals";
 
-import "@/shared/styles/global.scss";
+import "@/shared/styles/theme.scss";
+import "@/shared/styles/main.scss";
 
 import "@ant-design/v5-patch-for-react-19";
 
@@ -17,4 +18,5 @@ if (root) {
     );
 }
 
+// Start web vitals monitoring
 reportWebVitals();

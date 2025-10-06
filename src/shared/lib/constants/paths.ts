@@ -1,3 +1,34 @@
+/**
+ * Application route path constants.
+ *
+ * @description
+ * Centralized route paths for consistent navigation throughout the application.
+ * Use these constants instead of hardcoded strings.
+ *
+ * **Authentication Routes:**
+ * - Login page (root path)
+ *
+ * **Main Application Routes:**
+ * - Dashboard: Home page after authentication
+ * - Settings: User preferences and configuration
+ *
+ * **Content Management Routes:**
+ * - Contents: General content overview
+ * - Videos: Video content management
+ * - Articles: Article/blog management
+ *
+ * **Advertising Routes:**
+ * - Ad Banners: Banner advertisement management
+ * - Ad Popups: Popup advertisement management
+ *
+ * **User Management Routes:**
+ * - Admins: Administrator account management
+ * - Users: Regular user account management
+ *
+ * **Error Routes:**
+ * - 404 Not Found: Invalid route fallback (French: "page-introuvable")
+ */
+
 export const LOGIN_PATH = "/";
 export const DASHBOARD_PATH = "/dashboard";
 export const SETTING_PATH = "/settings";

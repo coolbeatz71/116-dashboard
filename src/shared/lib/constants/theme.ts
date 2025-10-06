@@ -1,5 +1,26 @@
 import type { ThemeConfig } from "antd/es/config-provider";
 
+/**
+ * Application color palette.
+ *
+ * @description
+ * Centralized color definitions for consistent theming.
+ * Colors are used in the Ant Design theme configuration.
+ *
+ * @property {string} BrandPrimary - Primary brand color
+ * @property {string} BrandSecondary - Secondary brand color
+ * @property {string} BrandBackgroundLight - Light background color
+ * @property {string} BrandBackgroundDark - Dark background color
+ * @property {string} Success - Success state color
+ * @property {string} Error - Error state color
+ * @property {string} Warning - Warning state color
+ * @property {string} Neutral - Neutral color
+ * @property {string} White - White color
+ * @property {string} Black - Black color
+ * @property {string} Yellow - Yellow accent color
+ * @property {string} Link - Link color
+ * @property {string} Background - Default background color
+ */
 export const Colors = {
     BrandPrimary: "#490fd2",
     BrandSecondary: "#ff74d4",
@@ -16,6 +37,13 @@ export const Colors = {
     Background: "#f0f2f5"
 } as const;
 
+/**
+ * Ant Design theme configuration.
+ *
+ * @description
+ * Customizes Ant Design components with brand colors and styling.
+ * Applied globally via ConfigProvider.
+ */
 export const Theme: ThemeConfig = {
     token: {
         colorPrimary: Colors.BrandPrimary,
@@ -35,13 +63,17 @@ export const Theme: ThemeConfig = {
             paddingContentVertical: 32
         },
         Form: {
-            labelColor: Colors.BrandBackgroundDark,
+            labelColor: `${Colors.BrandBackgroundDark}b3`,
             labelRequiredMarkColor: Colors.Error,
             labelFontSize: 12,
             labelHeight: "0 !important"
         },
         Select: {
             fontSizeLG: 14
+        },
+        Alert: {
+            withDescriptionPadding: "1rem !important",
+            defaultPadding: "1rem !important"
         }
     }
 } as const;

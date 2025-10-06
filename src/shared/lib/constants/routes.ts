@@ -1,5 +1,5 @@
 import loginRoute from "@/modules/auth/presentation/pages/LoginPage/route";
-import type { IRoute } from "../types/route";
+import type { IRoute } from "../types/IRoute";
 
 /**
  * Application routes configuration.

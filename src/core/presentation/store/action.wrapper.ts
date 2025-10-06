@@ -1,6 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { IApiProblemDetails } from "@/shared/api/type";
-import type { IUnknownObject } from "@/shared/lib/types/common";
+import type { IUnknownObject } from "@/shared/lib/types/IUnknownObject";
 
 /**
  * Standard state shape for async operations returning a single object.

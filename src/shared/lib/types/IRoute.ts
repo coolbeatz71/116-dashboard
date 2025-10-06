@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { IUnknownObject } from "@/shared/lib/types/common";
+import type { IUnknownObject } from "@/shared/lib/types/IUnknownObject";
 
 /**
  * Route configuration interface.

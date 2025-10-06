@@ -1,0 +1,62 @@
+import type { IAuthRepositoryPort } from "@/modules/auth/application/repositories/auth.repository.port";
+import type { IAuthResponse } from "@/modules/auth/domain/entities/IAuthResponse";
+import { AuthStorageService } from "@/modules/auth/infrastructure/storage/authstorage.service";
+import type { ILoginCredentials } from "@/modules/auth/presentation/model/ILoginCredentials";
+
+/**
+ * Interface for the login use case.
+ *
+ * @interface ILoginUseCase
+ */
+export interface ILoginUseCase {
+    /**
+     * Executes the login operation.
+     *
+     * @param {ILoginCredentials} credentials - User login credentials
+     * @returns {Promise<IAuthResponse>} Authentication response
+     */
+    execute(credentials: ILoginCredentials): Promise<IAuthResponse>;
+}
+
+/**
+ * Login use case implementing business logic for user authentication.
+ *
+ * @class LoginUseCase
+ * @implements {ILoginUseCase}
+ *
+ * @description
+ * Orchestrates the login flow:
+ * 1. Authenticates user via repository
+ * 2. Stores authentication token in localStorage
+ * 3. Stores user data in localStorage
+ * 4. Returns authentication response
+ *
+ * @remarks
+ * Part of the application layer in Clean Architecture.
+ * Contains business rules independent of frameworks and UI.
+ */
+export class LoginUseCase implements ILoginUseCase {
+    /**
+     * Creates an instance of LoginUseCase.
+     *
+     * @param {IAuthRepositoryPort} authRepository - Repository for auth operations (injected)
+     */
+    constructor(private readonly authRepository: IAuthRepositoryPort) {}
+
+    /**
+     * Executes the login use case.
+     *
+     * @param {ILoginCredentials} credentials - Email and password
+     * @returns {Promise<IAuthResponse>} Token and user data
+     * @throws {IApiProblemDetails} When authentication fails
+     */
+    async execute(credentials: ILoginCredentials): Promise<IAuthResponse> {
+        const response = await this.authRepository.login(credentials);
+
+        // Store authentication data
+        AuthStorageService.setToken(response.token);
+        AuthStorageService.setUser(response.user);
+
+        return response;
+    }
+}

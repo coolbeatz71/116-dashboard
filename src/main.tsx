@@ -18,4 +18,5 @@ if (root) {
     );
 }
 
+// Start web vitals monitoring
 reportWebVitals();

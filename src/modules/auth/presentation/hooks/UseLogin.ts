@@ -1,0 +1,71 @@
+import { Form } from "antd";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import type { IRootState } from "@/core/presentation/store/root.reducer";
+import { useAppDispatch } from "@/core/presentation/store/store";
+import { DASHBOARD_PATH } from "@/shared/lib/constants/paths";
+import type { ILoginCredentials } from "../model/ILoginCredentials";
+import { loginAction, resetLoginAction } from "../store/login.action";
+
+const { useForm } = Form;
+
+/**
+ * Custom hook for login form logic.
+ *
+ * @description
+ * Manages login form state, submission, and navigation.
+ * Handles form validation, API calls, and redirects on successful login.
+ *
+ * @returns Login form utilities and state
+ * @returns {FormInstance} form - Ant Design form instance
+ * @returns {IApiProblemDetails | null} error - Login error if any
+ * @returns {boolean} loading - Whether login is in progress
+ * @returns {Function} onSubmit - Form submission handler
+ * @returns {Function} resetLogin - Function to reset login state
+ */
+export function useLogin() {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    const [form] = useForm<ILoginCredentials>();
+
+    const { error, loading } = useSelector(({ auth: { login } }: IRootState) => login);
+
+    /**
+     * Handles login form submission.
+     *
+     * @param {ILoginCredentials} formValues - Email and password from form
+     *
+     * @description
+     * Dispatches login action and handles the result:
+     * - On rejection: Resets form fields
+     * - On success: Navigates to dashboard
+     */
+    const onSubmit = async (formValues: ILoginCredentials): Promise<void> => {
+        const result = await dispatch(loginAction(formValues));
+        if (loginAction.rejected.match(result)) form.resetFields();
+
+        if (loginAction.fulfilled.match(result)) {
+            navigate(DASHBOARD_PATH, { replace: true });
+        }
+    };
+
+    /**
+     * Resets login state (error and loading flags).
+     *
+     * @description
+     * Dispatches reset action to clear any previous login errors.
+     * Typically called on component mount.
+     */
+    const resetLogin = () => {
+        dispatch(resetLoginAction());
+    };
+
+    return {
+        form,
+        error,
+        loading,
+        onSubmit,
+        resetLogin
+    };
+}

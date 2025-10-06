@@ -1,17 +1,36 @@
 import { Button, Form, Input } from "antd";
-import type { FC } from "react";
-import { LoginValidator } from "../../utils/LoginValidator";
+import { type FC, useEffect } from "react";
+import { LoginValidator } from "@/modules/auth/presentation/utils/login.validator";
+import ErrorAlert from "@/shared/components/ErrorAlert/Error.Alert";
+import { useLogin } from "../../hooks/useLogin";
 
-const { Item, useForm } = Form;
+const { Item } = Form;
 const { Password } = Input;
 
+/**
+ * Login form component for admin authentication.
+ *
+ * @component
+ *
+ * @description
+ * Renders the login form with email and password fields.
+ * Includes form validation, error display, and loading states.
+ * Resets login state on component mount.
+ *
+ * @returns - The login form
+ */
 export const LoginForm: FC = () => {
-    const [form] = useForm();
+    const { form, onSubmit, loading, error, resetLogin } = useLogin();
+
+    // biome-ignore lint/correctness/useExhaustiveDependencies: only want to run on mount
+    useEffect(() => {
+        resetLogin();
+    }, []);
 
     return (
-        <Form form={form} size="large" layout="vertical" name="admin_login">
+        <Form form={form} size="large" onFinish={onSubmit} layout="vertical" name="admin_login">
             <Item
-                name="credential"
+                name="email"
                 label="Adresse e-mail"
                 validateTrigger={["onSubmit", "onBlur"]}
                 rules={LoginValidator.email("Adresse e-mail")}
@@ -25,12 +44,17 @@ export const LoginForm: FC = () => {
                 validateTrigger={["onSubmit", "onBlur"]}
                 rules={LoginValidator.password("Mot de passe")}
             >
-                <Password size="large" placeholder="••••••••••••••" visibilityToggle autoComplete="new-password" />
+                <Password
+                    size="large"
+                    visibilityToggle
+                    placeholder="••••••••••••••"
+                    autoComplete="new-password"
+                />
             </Item>
 
-            <br />
+            <ErrorAlert error={error} showIcon closable banner={false} />
 
-            <Button block size="large" type="primary" htmlType="submit">
+            <Button block size="large" type="primary" htmlType="submit" loading={loading}>
                 Connexion
             </Button>
         </Form>

@@ -1,0 +1,16 @@
+@use "@/shared/styles/colors.scss" as colors;
+@use "@/shared/styles/dimensions.scss" as dimensions;
+
+.formHeader {
+    margin: dimensions.$padding * 0.2  0 dimensions.$padding * 1.8;
+
+    & &__title {
+        margin: 0;
+        color: colors.$title;
+    }
+
+    &__subtitle {
+        font-weight: 300;
+        color: colors.$description;
+    }
+}

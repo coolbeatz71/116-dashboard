@@ -15,13 +15,13 @@
         padding-top: 0;
 
         [class~='ant-card-body'] {
-            padding: dimensions.$padding * 1.8;
+            padding: dimensions.$padding * 2.4;
         }
 
         &__logo {
             margin: auto;
-            width: dimensions.$min-sidenav-width * 1.8;
-            height: dimensions.$min-sidenav-width * 1.8;
+            width: dimensions.$min-sidenav-width * 1.2;
+            height: dimensions.$min-sidenav-width * 1.2;
 
             background-image: url('./../../../../../assets/logo/light_plain.svg');
 

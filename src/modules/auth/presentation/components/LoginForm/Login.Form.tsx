@@ -2,7 +2,8 @@ import { Button, Form, Input } from "antd";
 import { type FC, useEffect } from "react";
 import { LoginValidator } from "@/modules/auth/presentation/utils/login.validator";
 import ErrorAlert from "@/shared/components/ErrorAlert/Error.Alert";
-import { useLogin } from "../../hooks/useLogin";
+import { IconLockOutlined, IconUserOutlined } from "@/shared/components/Icons/Icons";
+import { useLogin } from "../../hooks/UseLogin";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -35,7 +36,7 @@ export const LoginForm: FC = () => {
                 validateTrigger={["onSubmit", "onBlur"]}
                 rules={LoginValidator.email("Adresse e-mail")}
             >
-                <Input size="large" placeholder="Adresse e-mail" />
+                <Input prefix={<IconUserOutlined />} size="large" placeholder="Adresse e-mail" />
             </Item>
 
             <Item
@@ -45,6 +46,7 @@ export const LoginForm: FC = () => {
                 rules={LoginValidator.password("Mot de passe")}
             >
                 <Password
+                    prefix={<IconLockOutlined />}
                     size="large"
                     visibilityToggle
                     placeholder="••••••••••••••"

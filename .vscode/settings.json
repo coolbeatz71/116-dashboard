@@ -34,6 +34,7 @@
     "editor.wordWrap": "off",
     "cSpell.words": [
         "Adresse",
+        "antd",
         "anticon",
         "barprogress",
         "caractères",
@@ -47,6 +48,7 @@
         "fadein",
         "heures",
         "hoverable",
+        "informations",
         "introuvable",
         "invalide",
         "jours",
@@ -55,13 +57,16 @@
         "moins",
         "nprogress",
         "obligatoire",
+        "parmi",
         "PASSPHASE",
         "persistor",
+        "Remplissez",
         "Retour",
         "trouvée",
         "TTFB",
         "usecase",
         "usecases",
-        "VITE"
+        "VITE",
+        "vous"
     ]
 }

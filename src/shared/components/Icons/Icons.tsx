@@ -41,6 +41,7 @@ export { default as IconInstagramFilled } from "@ant-design/icons/InstagramFille
 export { default as IconLikeFilled } from "@ant-design/icons/LikeFilled";
 export { default as IconLikeOutlined } from "@ant-design/icons/LikeOutlined";
 export { default as IconLoadingOutlined } from "@ant-design/icons/LoadingOutlined";
+export { default as IconLockOutlined } from "@ant-design/icons/LockOutlined";
 export { default as IconLoginOutlined } from "@ant-design/icons/LoginOutlined";
 export { default as IconLogoutOutlined } from "@ant-design/icons/LogoutOutlined";
 export { default as IconMenuOutlined } from "@ant-design/icons/MenuOutlined";

@@ -9,8 +9,10 @@ import { PersistGate } from "redux-persist/integration/react";
 import { AuthLayoutLoading } from "@/core/presentation/layouts/AuthLayout/AuthLayout.Loading";
 import { NotFoundPage } from "@/core/presentation/pages/NotFoundPage/NotFound.Page";
 import { persistor, store } from "@/core/presentation/store/store";
+import ForgotPasswordPage from "@/modules/auth/presentation/pages/ForgotPasswordPage/ForgotPassword.Page";
 import LoginPage from "@/modules/auth/presentation/pages/LoginPage/Login.Page";
-import { LOGIN_PATH } from "@/shared/lib/constants/paths";
+import { NavigationProgress } from "@/shared/components/NavigationProgress/NavigationProgress";
+import { FORGOT_PASSWORD_PATH, LOGIN_PATH } from "@/shared/lib/constants/paths";
 import { Theme } from "@/shared/lib/constants/theme";
 
 const App: FC = () => {
@@ -31,10 +33,15 @@ const App: FC = () => {
             <PersistGate loading={<AuthLayoutLoading />} persistor={persistor}>
                 <ConfigProvider theme={Theme}>
                     <BrowserRouter>
+                        <NavigationProgress />
                         <Suspense fallback={<AuthLayoutLoading />}>
                             <Routes>
-                                <Route path="*" element={<NotFoundPage />} />
                                 <Route path={LOGIN_PATH} element={<LoginPage />} />
+                                <Route
+                                    path={FORGOT_PASSWORD_PATH}
+                                    element={<ForgotPasswordPage />}
+                                />
+                                <Route path="*" element={<NotFoundPage />} />
                             </Routes>
                         </Suspense>
                     </BrowserRouter>

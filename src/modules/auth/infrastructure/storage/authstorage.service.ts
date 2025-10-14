@@ -1,19 +1,24 @@
 import { LocalStorageService } from "@/core/infrastructure/storage/localstorage.service";
 import type { IUser } from "@/modules/auth/domain/entities/IUser";
-import { API_TOKEN_STORAGE_KEY, USER_DATA_STORAGE_KEY } from "@/shared/lib/constants/common";
+import {
+    API_TOKEN_STORAGE_KEY,
+    OTP_CODE_STORAGE_KEY,
+    USER_DATA_STORAGE_KEY
+} from "@/shared/lib/constants/common";
 
 /**
  * Authentication storage service for managing auth data in localStorage.
  *
  * @description
  * Provides specialized methods for storing and retrieving authentication-related
- * data (JWT tokens and user information). Wraps the generic LocalStorageService
+ * data (JWT tokens, OTP codes, and user information). Wraps the generic LocalStorageService
  * with auth-specific operations.
  *
  * @remarks
  * - Uses predefined storage keys from constants
  * - Part of the infrastructure layer
- * - Used by login use case and API client
+ * - Used by authentication use cases and API client
+ * - Manages JWT tokens, OTP verification codes, and user data
  */
 export const AuthStorageService = {
     /**
@@ -23,6 +28,15 @@ export const AuthStorageService = {
      */
     setToken(token: string): void {
         LocalStorageService.setItem(API_TOKEN_STORAGE_KEY, token);
+    },
+
+    /**
+     * Stores the OTP verification code.
+     *
+     * @param {string} code - OTP code from verification response
+     */
+    setOtpCode(code: string): void {
+        LocalStorageService.setItem(OTP_CODE_STORAGE_KEY, code);
     },
 
     /**
@@ -44,6 +58,15 @@ export const AuthStorageService = {
     },
 
     /**
+     * Retrieves the stored OTP code.
+     *
+     * @returns {string | null} OTP code or null if not found
+     */
+    getOtpCode(): string | null {
+        return LocalStorageService.getItem<string>(OTP_CODE_STORAGE_KEY);
+    },
+
+    /**
      * Retrieves the stored user data.
      *
      * @returns {IUser | null} User entity or null if not found
@@ -57,6 +80,13 @@ export const AuthStorageService = {
      */
     clearToken(): void {
         LocalStorageService.removeItem(API_TOKEN_STORAGE_KEY);
+    },
+
+    /**
+     * Removes the stored OTP code.
+     */
+    clearOtpCode(): void {
+        LocalStorageService.removeItem(OTP_CODE_STORAGE_KEY);
     },
 
     /**

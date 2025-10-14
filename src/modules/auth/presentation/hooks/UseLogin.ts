@@ -1,13 +1,22 @@
-import { Form } from "antd";
+import { Form, type FormInstance } from "antd";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import type { IRootState } from "@/core/presentation/store/root.reducer";
 import { useAppDispatch } from "@/core/presentation/store/store";
+import type { ILoginCredentials } from "@/modules/auth/presentation/model/ILoginCredentials";
+import { loginAction, resetLoginAction } from "@/modules/auth/presentation/store/login.action";
+import type { IApiProblemDetails } from "@/shared/api/type";
 import { DASHBOARD_PATH } from "@/shared/lib/constants/paths";
-import type { ILoginCredentials } from "../model/ILoginCredentials";
-import { loginAction, resetLoginAction } from "../store/login.action";
 
 const { useForm } = Form;
+
+interface IUseLogin {
+    loading: boolean;
+    resetLogin: () => void;
+    form: FormInstance<ILoginCredentials>;
+    error: IApiProblemDetails | null | undefined;
+    onSubmit: (formValues: ILoginCredentials) => Promise<void>;
+}
 
 /**
  * Custom hook for login form logic.
@@ -23,7 +32,7 @@ const { useForm } = Form;
  * @returns {Function} onSubmit - Form submission handler
  * @returns {Function} resetLogin - Function to reset login state
  */
-export function useLogin() {
+export const useLogin = (): IUseLogin => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -68,4 +77,4 @@ export function useLogin() {
         onSubmit,
         resetLogin
     };
-}
+};

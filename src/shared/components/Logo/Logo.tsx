@@ -23,7 +23,7 @@ interface ILogoProps {
  * Renders the application logo as a styled div. Can optionally wrap
  * the logo in a link to navigate to the dashboard.
  *
- * @returns - The logo element, optionally wrapped in a link
+ * @returns The logo element, optionally wrapped in a link
  */
 export const Logo: FC<ILogoProps> = ({ className, canRedirect = false }) =>
     canRedirect ? (

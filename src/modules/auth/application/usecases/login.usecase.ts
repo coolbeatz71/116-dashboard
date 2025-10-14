@@ -1,3 +1,4 @@
+import type { IUseCase } from "@/core/application/IUseCase";
 import type { IAuthRepositoryPort } from "@/modules/auth/application/repositories/auth.repository.port";
 import type { IAuthResponse } from "@/modules/auth/domain/entities/IAuthResponse";
 import { AuthStorageService } from "@/modules/auth/infrastructure/storage/authstorage.service";
@@ -7,16 +8,9 @@ import type { ILoginCredentials } from "@/modules/auth/presentation/model/ILogin
  * Interface for the login use case.
  *
  * @interface ILoginUseCase
+ * @extends {IUseCase<ILoginCredentials, IAuthResponse>}
  */
-export interface ILoginUseCase {
-    /**
-     * Executes the login operation.
-     *
-     * @param {ILoginCredentials} credentials - User login credentials
-     * @returns {Promise<IAuthResponse>} Authentication response
-     */
-    execute(credentials: ILoginCredentials): Promise<IAuthResponse>;
-}
+interface ILoginUseCase extends IUseCase<ILoginCredentials, IAuthResponse> {}
 
 /**
  * Login use case implementing business logic for user authentication.

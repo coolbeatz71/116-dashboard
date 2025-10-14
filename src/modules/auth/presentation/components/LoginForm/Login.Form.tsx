@@ -1,9 +1,12 @@
 import { Button, Form, Input } from "antd";
 import { type FC, useEffect } from "react";
-import { LoginValidator } from "@/modules/auth/presentation/utils/login.validator";
+import { useLogin } from "@/modules/auth/presentation/hooks/UseLogin";
+import { LoginValidator } from "@/modules/auth/presentation/utils/validators/login.validator";
 import ErrorAlert from "@/shared/components/ErrorAlert/Error.Alert";
-import { IconLockOutlined, IconUserOutlined } from "@/shared/components/Icons/Icons";
-import { useLogin } from "../../hooks/UseLogin";
+import { IconLockOutlined, IconMailOutlined } from "@/shared/components/Icons/Icons";
+import { FORGOT_PASSWORD_PATH } from "@/shared/lib/constants/paths";
+
+import styles from "./index.module.scss";
 
 const { Item } = Form;
 const { Password } = Input;
@@ -18,7 +21,7 @@ const { Password } = Input;
  * Includes form validation, error display, and loading states.
  * Resets login state on component mount.
  *
- * @returns - The login form
+ * @returns The login form
  */
 export const LoginForm: FC = () => {
     const { form, onSubmit, loading, error, resetLogin } = useLogin();
@@ -29,14 +32,21 @@ export const LoginForm: FC = () => {
     }, []);
 
     return (
-        <Form form={form} size="large" onFinish={onSubmit} layout="vertical" name="admin_login">
+        <Form
+            form={form}
+            size="large"
+            layout="vertical"
+            name="admin_login"
+            onFinish={onSubmit}
+            className={styles.loginForm}
+        >
             <Item
                 name="email"
                 label="Adresse e-mail"
                 validateTrigger={["onSubmit", "onBlur"]}
                 rules={LoginValidator.email("Adresse e-mail")}
             >
-                <Input prefix={<IconUserOutlined />} size="large" placeholder="Adresse e-mail" />
+                <Input prefix={<IconMailOutlined />} placeholder="Adresse e-mail" />
             </Item>
 
             <Item
@@ -46,17 +56,28 @@ export const LoginForm: FC = () => {
                 rules={LoginValidator.password("Mot de passe")}
             >
                 <Password
-                    prefix={<IconLockOutlined />}
-                    size="large"
                     visibilityToggle
-                    placeholder="••••••••••••••"
                     autoComplete="new-password"
+                    placeholder="••••••••••••••"
+                    prefix={<IconLockOutlined />}
                 />
+            </Item>
+
+            <Item className={styles.loginForm__forgotPasswordButton}>
+                <Button type="link" block size="small" href={FORGOT_PASSWORD_PATH}>
+                    Mot de passe oublié?
+                </Button>
             </Item>
 
             <ErrorAlert error={error} showIcon closable banner={false} />
 
-            <Button block size="large" type="primary" htmlType="submit" loading={loading}>
+            <Button
+                block
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                className={styles.loginForm__submitButton}
+            >
                 Connexion
             </Button>
         </Form>

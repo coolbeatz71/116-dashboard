@@ -10,9 +10,8 @@
 
     &__card {
         width: 512px;
-        display: inline-block;
-        padding: dimensions.$padding * 1.8 0;
         padding-top: 0;
+        display: inline-block;
 
         [class~='ant-card-body'] {
             padding: dimensions.$padding * 2.4;
@@ -23,7 +22,7 @@
             width: dimensions.$min-sidenav-width * 1.2;
             height: dimensions.$min-sidenav-width * 1.2;
 
-            background-image: url('./../../../../../assets/logo/light_plain.svg');
+            background-image: url('@/assets/logo/light_plain.svg');
 
             background-position: center;
             background-repeat: no-repeat;

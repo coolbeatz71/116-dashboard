@@ -7,13 +7,15 @@ import type { IUnknownObject } from "@/shared/lib/types/IUnknownObject";
  *
  * @interface IBasicInitialState
  *
- * @property {IUnknownObject} data - The fetched data object
+ * @template T - The type of data returned by the async operation
+ *
+ * @property {T} data - The fetched data object
  * @property {boolean} loading - True when async operation is in progress
  * @property {boolean} fetched - True when operation completed successfully at least once
  * @property {IApiProblemDetails | null} error - Error details if operation failed
  */
-export interface IBasicInitialState {
-    data: IUnknownObject;
+export interface IBasicInitialState<T = IUnknownObject> {
+    data: T;
     loading: boolean;
     fetched: boolean;
     error?: IApiProblemDetails | null;
@@ -24,13 +26,15 @@ export interface IBasicInitialState {
  *
  * @interface IBasicInitialStateList
  *
- * @property {IUnknownObject[]} data - The fetched data array
+ * @template T - The type of items in the data array
+ *
+ * @property {T[]} data - The fetched data array
  * @property {boolean} loading - True when async operation is in progress
  * @property {boolean} fetched - True when operation completed successfully at least once
  * @property {Error | null} error - Error details if operation failed
  */
-export interface IBasicInitialStateList {
-    data: IUnknownObject[];
+export interface IBasicInitialStateList<T = IUnknownObject> {
+    data: T[];
     loading: boolean;
     fetched: boolean;
     error?: Error | null;
@@ -59,6 +63,47 @@ export const BasicInitialStateList: IBasicInitialStateList = {
     fetched: false,
     error: null
 };
+
+/**
+ * Creates a type-safe initial state for async operations.
+ *
+ * @template T - The type of data returned by the async operation
+ * @returns {IBasicInitialState<T>} Type-safe initial state
+ *
+ * @example
+ * ```typescript
+ * const authInitialState = {
+ *   login: createInitialState<IAuthResponse>(),
+ *   logout: createInitialState<IUnknownObject>()
+ * };
+ * ```
+ */
+export const createInitialState = <T = IUnknownObject>(): IBasicInitialState<T> => ({
+    data: {} as T,
+    loading: false,
+    fetched: false,
+    error: null
+});
+
+/**
+ * Creates a type-safe initial state for async list operations.
+ *
+ * @template T - The type of items in the data array
+ * @returns {IBasicInitialStateList<T>} Type-safe initial state for lists
+ *
+ * @example
+ * ```typescript
+ * const usersInitialState = {
+ *   list: createInitialStateList<IUser>()
+ * };
+ * ```
+ */
+export const createInitialStateList = <T = IUnknownObject>(): IBasicInitialStateList<T> => ({
+    data: [] as T[],
+    loading: false,
+    fetched: false,
+    error: null
+});
 
 /**
  * Resets state flags to default values (preserves data).

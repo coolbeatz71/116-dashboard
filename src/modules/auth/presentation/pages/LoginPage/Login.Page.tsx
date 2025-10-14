@@ -1,8 +1,9 @@
 import { Card } from "antd";
 import type { FC } from "react";
+import FormHeader from "@/modules/auth/presentation/components/FormHeader/Form.Header";
 import { LoginForm } from "@/modules/auth/presentation/components/LoginForm/Login.Form";
 import { Logo } from "@/shared/components/Logo/Logo";
-import FormHeader from "../../components/FormHeader/Form.Header";
+
 import styles from "./index.module.scss";
 
 /**
@@ -14,7 +15,7 @@ import styles from "./index.module.scss";
  * Main login page displaying the application logo and login form
  * in a centered card layout.
  *
- * @returns - The login page
+ * @returns The login page
  */
 const LoginPage: FC = () => {
     return (

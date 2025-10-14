@@ -1,9 +1,9 @@
-import { Alert, Form } from "antd";
+import { Alert } from "antd";
 import type { FC, MouseEventHandler } from "react";
 import type { IApiProblemDetails } from "@/shared/api/type";
-import { IconCloseCircleOutlined } from "../Icons/Icons";
+import { IconCloseCircleOutlined } from "@/shared/components/Icons/Icons";
 
-const { Item } = Form;
+import styles from "./index.module.scss";
 
 /**
  * Props for the ErrorAlert component.
@@ -38,24 +38,23 @@ export interface IErrorAlertProps {
 const ErrorAlert: FC<IErrorAlertProps> = ({ error, closable, banner, showIcon, onClose }) => {
     return (
         error && (
-            <Item>
-                <Alert
-                    type="error"
-                    banner={banner}
-                    onClose={onClose}
-                    showIcon={showIcon}
-                    closable={
-                        closable
-                            ? {
-                                  "aria-label": "close",
-                                  closeIcon: <IconCloseCircleOutlined />
-                              }
-                            : false
-                    }
-                    message={error?.title}
-                    description={error?.detail}
-                />
-            </Item>
+            <Alert
+                type="error"
+                banner={banner}
+                onClose={onClose}
+                showIcon={showIcon}
+                className={styles.errorAlert}
+                closable={
+                    closable
+                        ? {
+                              "aria-label": "close",
+                              closeIcon: <IconCloseCircleOutlined />
+                          }
+                        : false
+                }
+                message={error?.title}
+                description={error?.detail}
+            />
         )
     );
 };

@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import "@ant-design/v5-patch-for-react-19";
 
+import "@/shared/styles/nprogress.scss";
 import "@/shared/styles/fonts.scss";
 import "@/shared/styles/theme.scss";
 import "@/shared/styles/main.scss";

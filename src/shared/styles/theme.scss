@@ -103,7 +103,7 @@ input {
 
 [class~="ant-form-item-additional"]{
     margin-top: 0.2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
 
     [class~='ant-form-item-explain-error'] {
         font-size: 12px;
@@ -157,10 +157,10 @@ input {
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
+        font-size: 11pt !important;
     }
 
     [class~='ant-alert-description'] {
-        font-weight: 100 !important;
         color: colors.$description !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
@@ -168,5 +168,6 @@ input {
         -webkit-line-clamp: 2 !important;
         line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
+        font-size: 9pt !important;
     }
 }

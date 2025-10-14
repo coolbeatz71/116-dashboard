@@ -25,6 +25,7 @@ export interface AdminForgotPasswordRequest {
 
 export interface AdminForgotPasswordResponse {
   isSuccess: boolean;
+  email: string;
 }
 
 export interface AdminGetOwnProfileResponse {
@@ -140,6 +141,7 @@ export interface PublicForgotPasswordRequest {
 
 export interface PublicForgotPasswordResponse {
   isSuccess: boolean;
+  email: string;
 }
 
 export interface PublicGetOwnProfileResponse {
@@ -912,7 +914,7 @@ export class Api<
      * 
      * **Response Codes:**
      * 
-     * - Returns 200 OK with success status (always true for security)
+     * - Returns 200 OK with success status (always true for security) and the email address
      * 
      * - Returns 400 Bad Request for invalid email format
      * 
@@ -1979,7 +1981,7 @@ export class Api<
      * 
      * **Response Codes:**
      * 
-     * - Returns 200 OK with success status (always true for security)
+     * - Returns 200 OK with success status (always true for security) and the email address
      * 
      * - Returns 400 Bad Request for invalid email format
      * 

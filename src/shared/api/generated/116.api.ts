@@ -460,19 +460,14 @@ export class Api<
      * **Supported OTP Purposes:**
      * 
      * - **Email Verification**: During admin account registration
-     * 
      * - **Account Recovery**: For account recovery processes
      * 
      * This endpoint performs the following operations:
      * 
      * - Validates the OTP code format (6-digit numeric)
-     * 
      * - Checks if the admin user exists and is not already verified
-     * 
      * - Validates the OTP against the database (not expired, not used, under attempt limit)
-     * 
      * - Marks the admin user account as verified upon successful validation
-     * 
      * - Invalidates all remaining OTPs for the admin user
      * 
      * **Authentication Requirements:**
@@ -482,37 +477,25 @@ export class Api<
      * **Security Features:**
      * 
      * - OTP expiration (60 minutes)
-     * 
      * - Maximum 3 verification attempts per OTP
-     * 
      * - Single-use OTP codes
-     * 
      * - Automatic cleanup of expired/used OTPs
-     * 
      * - Admin role verification
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with verification success status
-     * 
      * - Returns 400 Bad Request for invalid OTP code format
-     * 
      * - Returns 401 Unauthorized for expired OTP
-     * 
      * - Returns 403 Forbidden for maximum attempts reached
-     * 
      * - Returns 404 Not Found for no valid OTP found
-     * 
      * - Returns 409 Conflict if account is already verified
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid OTP code format or value
-     * 
      * - AuthenticationException (401): OTP has expired
-     * 
      * - AuthorizationException (403): Maximum verification attempts reached
-     * 
      * - NotFoundException (404): No valid OTP found for the admin user.
      *
      * @tags admin::authentication
@@ -545,39 +528,28 @@ export class Api<
      * This endpoint performs secure sign-out by:
      * 
      * - Validating JWT token authentication
-     * 
      * - Verifying account is active (not suspended/banned)
-     * 
      * - Ensuring user has admin or super admin role
-     * 
      * - Updating user login status in the database
-     * 
      * - Allowing unverified accounts to sign out
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token
-     * 
      * - Account must be active (not suspended)
-     * 
      * - User must have Admin or SuperAdmin role
-     * 
      * - Verification status is not required for sign-out
      * 
      * **Security Features:**
      * 
      * - Only active admin accounts can perform sign-out
-     * 
      * - Prevents unnecessary database updates if already logged out
-     * 
      * - Always returns success for consistent UX
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive accounts or insufficient permissions
      * 
      * **Process Flow:**
@@ -617,65 +589,45 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates the OTP code format and authenticity
-     * 
      * - Checks if the admin user exists and is active
-     * 
      * - Validates the OTP against the database (not expired, not used, under attempt limit)
-     * 
      * - Hashes the new password using secure algorithms
-     * 
      * - Updates the admin user's password in the database
-     * 
      * - Invalidates all remaining password reset OTPs for the user
      * 
      * **Authentication Requirements:**
      * 
      * - No authentication required; open to admin users with valid OTP codes
-     * 
      * - Admin user account must be active
      * 
      * **Security Features:**
      * 
      * - OTP expiration (60 minutes)
-     * 
      * - Maximum 3 verification attempts per OTP
-     * 
      * - Single-use OTP codes
-     * 
      * - Secure password hashing (PBKDF2 with SHA-256)
-     * 
      * - Automatic cleanup of expired/used OTPs
-     * 
      * - Password validation enforced by validator
      * 
      * **Request Requirements:**
      * 
      * - Valid email address format
-     * 
      * - Valid OTP code (6-digit numeric)
-     * 
      * - New password meeting security requirements
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 400 Bad Request for invalid input or inactive account
-     * 
      * - Returns 401 Unauthorized for expired OTP
-     * 
      * - Returns 403 Forbidden for max attempts reached
-     * 
      * - Returns 404 Not Found for no valid OTP found or user not found
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid input format, inactive account, or invalid OTP
-     * 
      * - AuthenticationException (401): OTP has expired
-     * 
      * - AuthorizationException (403): Maximum verification attempts reached
-     * 
      * - NotFoundException (404): No valid OTP found or user not found
      * 
      * **Process Flow:**
@@ -725,42 +677,31 @@ export class Api<
      * @description Resends a new OTP verification code for admin users by invalidating existing OTPs and generating a fresh one.
      * This endpoint enables admins to request a new verification code when:
      * 
+     * 
      * - The original OTP wasn't received
-     * 
      * - The previous OTP has expired
-     * 
      * - There were issues with email delivery
-     * 
      * - Maximum attempts were reached on the previous OTP
      * 
      * **Request Requirements:**
      * 
      * - Valid admin email address format
-     * 
      * - Valid OTP purpose (EmailVerification, PasswordReset, TwoFactorAuthentication, AccountRecovery)
-     * 
      * - User must have admin privileges
-     * 
      * - Account must be active
      * 
      * **Security Features:**
      * 
      * - Admin role verification
-     * 
      * - Account active status validation
-     * 
      * - Automatic invalidation of existing OTPs for the specified purpose
-     * 
      * - New OTP generation with fresh expiration time
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status when OTP is resent
-     * 
      * - Returns 400 Bad Request for invalid email format or purpose
-     * 
      * - Returns 404 Not Found when admin user doesn't exist
-     * 
      * - Returns 403 Forbidden when user lacks admin privileges
      * 
      * **Process Flow:**
@@ -780,11 +721,8 @@ export class Api<
      * **Supported OTP Purposes:**
      * 
      * - EmailVerification: For email address verification
-     * 
      * - PasswordReset: For password reset requests
-     * 
      * - TwoFactorAuthentication: For 2FA setup/verification
-     * 
      * - AccountRecovery: For account recovery processes
      *
      * @tags admin::authentication
@@ -815,53 +753,37 @@ export class Api<
      * This endpoint performs enhanced authentication by:
      * 
      * - Validating email and password
-     * 
      * - Verifying the account is active and verified
-     * 
      * - Checking for admin role privileges (Admin or SuperAdmin)
-     * 
      * - Generating JWT token with appropriate admin claims
-     * 
      * - Recording the login activity
      * 
      * **Authentication Requirements:**
      * 
      * - Valid email and password combination
-     * 
      * - Account must be active and verified
-     * 
      * - User must have Admin or SuperAdmin role assigned
      * 
      * **Security Features:**
      * 
      * - Password verification using secure hashing (bcrypt)
-     * 
      * - Role-based access validation
-     * 
      * - Login activity tracking
-     * 
      * - Enhanced JWT claims for admin operations
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with user info and JWT token on successful authentication
-     * 
      * - Returns 400 Bad Request for invalid email format or incorrect password
-     * 
      * - Returns 401 Unauthorized when user lacks admin privileges (Admin/SuperAdmin role required)
-     * 
      * - Returns 403 Forbidden when user account is inactive or disabled
-     * 
      * - Returns 404 Not Found when no user exists with the provided email
      * 
      * **Error Handling:**
      * 
      * - AuthenticationException (401): Missing admin role - user authenticated but lacks Admin/SuperAdmin privileges
-     * 
      * - AuthorizationException (403): Account inactive - user exists but account is disabled/suspended
-     * 
      * - BadRequestException (400): Invalid password - email exists but password is incorrect
-     * 
      * - NotFoundException (404): User not found - no account exists with the provided email.
      *
      * @tags admin::authentication
@@ -892,30 +814,25 @@ export class Api<
      * The generated OTP can be used with the verify-otp endpoint to proceed with password reset.
      * This endpoint follows security best practices by:
      * 
+     * 
      * - Always returning success to prevent user enumeration attacks
-     * 
      * - Only generating OTP for valid and active admin accounts
-     * 
      * - Silently handling cases where email doesn't exist or account is inactive
      * 
      * **Request Requirements:**
      * 
      * - Valid email address format
-     * 
      * - Email must belong to an existing and active admin account
      * 
      * **Security Features:**
      * 
      * - User enumeration protection (consistent response regardless of email existence)
-     * 
      * - Account status validation (active admin accounts only)
-     * 
      * - OTP generation with expiration time
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status (always true for security) and the email address
-     * 
      * - Returns 400 Bad Request for invalid email format
      * 
      * **Process Flow:**
@@ -956,69 +873,47 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies admin user account is active
-     * 
      * - Validates the current password against stored hash
-     * 
      * - Ensures new password is different from current password
-     * 
      * - Hashes the new password using secure algorithms
-     * 
      * - Updates the admin user's password in the database
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - Only admin role users can change their password
      * 
      * **Security Features:**
      * 
      * - Current password verification for authorization
-     * 
      * - Prevention of reusing the same password
-     * 
      * - Secure password hashing (PBKDF2 with SHA-256)
-     * 
      * - Strong password validation enforced by validator
-     * 
      * - Account status validation before password change
      * 
      * **Request Requirements:**
      * 
      * - Valid old password for verification
-     * 
      * - New password meeting security requirements
-     * 
      * - User must be authenticated with valid JWT token
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 400 Bad Request for invalid old password or same password
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive accounts or insufficient permissions
-     * 
      * - Returns 404 Not Found for user not found
-     * 
      * - Returns 409 Conflict for new password same as old
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid old password or inactive account
-     * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Account not active or insufficient permissions
-     * 
      * - NotFoundException (404): User not found
-     * 
      * - ConflictException (409): New password same as current password
      * 
      * **Process Flow:**
@@ -1071,71 +966,50 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies admin user account is active
-     * 
      * - Retrieves complete admin user information including roles and permissions
-     * 
      * - Fetches admin user avatar file information if available
-     * 
      * - Returns comprehensive admin user profile data
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - User must have Admin or SuperAdmin role
      * 
      * **Returned Information:**
      * 
      * - Basic user details (ID, email, username, verification status)
-     * 
      * - User roles and associated permissions
-     * 
      * - Avatar file information (if available)
-     * 
      * - Account status and activity information
-     * 
      * - Authentication provider information (local/social)
      * 
      * **Security Features:**
      * 
      * - Admin user can only access their own profile information
-     * 
      * - Account status validation before profile retrieval
-     * 
      * - Comprehensive permission and role information for authorization
-     * 
      * - Avatar file security through proper file service integration
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with complete admin user profile data
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for insufficient permissions or inactive accounts
-     * 
      * - Returns 404 Not Found for user not found
      * 
      * **Error Handling:**
      * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Insufficient permissions or account inactive
-     * 
      * - NotFoundException (404): User not found
      * 
      * **Use Cases:**
      * 
      * - Display admin user profile information in admin applications
-     * 
      * - Determine admin user permissions for UI/UX customization
-     * 
      * - Validate admin user account status
-     * 
      * - Access avatar and display admin user information
      * 
      * **Process Flow:**
@@ -1181,31 +1055,22 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies admin user account is active
-     * 
      * - Validates uniqueness for username and phone number if being updated
-     * 
      * - Updates admin user profile information selectively
-     * 
      * - Returns updated admin user profile data
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - Only logged-in admin users can update their profile
-     * 
      * - Admin or SuperAdmin role required
      * 
      * **Updateable Information:**
      * 
      * - Username (must be unique across the system)
-     * 
      * - Phone number with country information
-     * 
      * - Country details (name, flag, ISO code, dial code)
      * 
      * **Restrictions:**
@@ -1215,41 +1080,29 @@ export class Api<
      * **Security Features:**
      * 
      * - Admin user can only update their own profile information
-     * 
      * - Account status validation before updates
-     * 
      * - Uniqueness validation for username and phone
-     * 
      * - Email updates prohibited for admin users
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with updated admin user profile data
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive accounts or insufficient permissions
-     * 
      * - Returns 404 Not Found for user not found
-     * 
      * - Returns 409 Conflict for duplicate username/phone
      * 
      * **Error Handling:**
      * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Account not active or insufficient permissions
-     * 
      * - NotFoundException (404): User not found
-     * 
      * - ConflictException (409): Username or phone already exists
      * 
      * **Use Cases:**
      * 
      * - Update admin profile information in administration panels
-     * 
      * - Change username for admin branding
-     * 
      * - Update contact information and location details
      * 
      * **Process Flow:**
@@ -1269,11 +1122,8 @@ export class Api<
      * **Important Notes:**
      * 
      * - Email updates are restricted for admin users
-     * 
      * - Phone number updates include country information
-     * 
      * - Only provided fields are updated (partial updates supported)
-     * 
      * - All validations are performed before any updates.
      *
      * @tags admin::profile
@@ -1312,51 +1162,36 @@ export class Api<
      * **Authentication Requirements:**
      * 
      * - Admin user must be logged in (JWT token required)
-     * 
      * - Must have Admin or SuperAdmin role
-     * 
      * - Account must be active
      * 
      * **Request Requirements:**
      * 
      * - Valid avatar URL (required)
-     * 
      * - URL must be accessible and point to a valid image
-     * 
      * - Maximum URL length: 2048 characters
      * 
      * **Avatar Management:**
      * 
      * - Previous avatar is automatically deleted when updating
-     * 
      * - New avatar is downloaded and stored in the system
-     * 
      * - Supports common image formats (JPEG, PNG, GIF, WebP)
-     * 
      * - Smart deduplication: if the same URL is provided again, no duplicate download occurs
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with updated admin user information including new avatar
-     * 
      * - Returns 400 Bad Request for invalid avatar URL format
-     * 
      * - Returns 401 Unauthorized for unauthenticated requests
-     * 
      * - Returns 403 Forbidden for non-admin users or inactive accounts
-     * 
      * - Returns 404 Not Found when admin user doesn't exist
      * 
      * **Security Features:**
      * 
      * - Only authenticated admin users can update their own avatar
-     * 
      * - Role-based authorization (Admin/SuperAdmin required)
-     * 
      * - Account activity verification (active accounts only)
-     * 
      * - URL validation to ensure proper format
-     * 
      * - Automatic cleanup of old avatar files
      * 
      * **Process Flow:**
@@ -1405,19 +1240,14 @@ export class Api<
      * **Supported OTP Purposes:**
      * 
      * - **Email Verification**: During user account registration
-     * 
      * - **Account Recovery**: For account recovery processes
      * 
      * This endpoint performs the following operations:
      * 
      * - Validates the OTP code format (6-digit numeric)
-     * 
      * - Checks if the user exists and is not already verified
-     * 
      * - Validates the OTP against the database (not expired, not used, under attempt limit)
-     * 
      * - Marks the user account as verified upon successful validation
-     * 
      * - Invalidates all remaining OTPs for the user
      * 
      * **Authentication Requirements:**
@@ -1427,37 +1257,25 @@ export class Api<
      * **Security Features:**
      * 
      * - OTP expiration (60 minutes)
-     * 
      * - Maximum 3 verification attempts per OTP
-     * 
      * - Single-use OTP codes
-     * 
      * - Automatic cleanup of expired/used OTPs
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with verification success status
-     * 
      * - Returns 400 Bad Request for invalid OTP code format
-     * 
      * - Returns 401 Unauthorized for expired OTP
-     * 
      * - Returns 403 Forbidden for maximum attempts reached
-     * 
      * - Returns 404 Not Found for no valid OTP found
-     * 
      * - Returns 409 Conflict if account is already verified
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid OTP code format or value
-     * 
      * - AuthenticationException (401): OTP has expired
-     * 
      * - AuthorizationException (403): Maximum verification attempts reached
-     * 
      * - NotFoundException (404): No valid OTP found for the user
-     * 
      * - ConflictException (409): User account is already verified.
      *
      * @tags public::authentication
@@ -1492,15 +1310,10 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates social provider data (email, username, avatar URL, provider)
-     * 
      * - Checks for existing local account conflicts
-     * 
      * - Creates new user account or updates existing social user
-     * 
      * - Downloads and stores avatar from social provider URL
-     * 
      * - Assigns visitor role to new users
-     * 
      * - Marks social users as verified and active
      * 
      * **Authentication Requirements:**
@@ -1510,31 +1323,24 @@ export class Api<
      * **Supported Providers:**
      * 
      * - Google OAuth
-     * 
      * - Facebook OAuth
      * 
      * **Security Features:**
      * 
      * - Prevents social login if local account exists with same email
-     * 
      * - Downloads external avatars to prevent hotlinking
-     * 
      * - Automatically verifies social accounts (trusted providers)
-     * 
      * - Updates user login status
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with user info and JWT token
-     * 
      * - Returns 400 Bad Request for invalid provider or malformed data
-     * 
      * - Returns 409 Conflict if local account exists with same email
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid provider or malformed social data
-     * 
      * - ConflictException (409): Local account already exists with email.
      *
      * @tags public::authentication
@@ -1566,13 +1372,9 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates signup data (email, username, password, etc.)
-     * 
      * - Ensures the email/username is unique
-     * 
      * - Hashes the password using secure algorithms (bcrypt)
-     * 
      * - Creates a new public user account in the system
-     * 
      * - Triggers optional account verification (email/SMS)
      * 
      * **Authentication Requirements:**
@@ -1582,23 +1384,18 @@ export class Api<
      * **Security Features:**
      * 
      * - Password securely hashed before storage
-     * 
      * - Uniqueness checks on email and username
-     * 
      * - Optional verification workflow (e.g., email confirmation)
      * 
      * **Response Codes:**
      * 
      * - Returns 201 Created with newly created user info (excluding sensitive data)
-     * 
      * - Returns 400 Bad Request for invalid input or weak password
-     * 
      * - Returns 409 Conflict if email/username already exists
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid signup data (missing/invalid fields, weak password)
-     * 
      * - ConflictException (409): Email or username already in use.
      *
      * @tags public::authentication
@@ -1628,35 +1425,26 @@ export class Api<
      * This endpoint performs secure sign-out by:
      * 
      * - Validating JWT token authentication
-     * 
      * - Verifying account is active (not suspended/banned)
-     * 
      * - Updating user login status in the database
-     * 
      * - Allowing unverified accounts to sign out
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token
-     * 
      * - Account must be active (not suspended)
-     * 
      * - Verification status is not required for sign-out
      * 
      * **Security Features:**
      * 
      * - Only active accounts can perform sign-out
-     * 
      * - Prevents unnecessary database updates if already logged out
-     * 
      * - Always returns success for consistent UX
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive accounts
      * 
      * **Process Flow:**
@@ -1694,65 +1482,45 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates the OTP code format and authenticity
-     * 
      * - Checks if the user exists and is active/verified
-     * 
      * - Validates the OTP against the database (not expired, not used, under attempt limit)
-     * 
      * - Hashes the new password using secure algorithms
-     * 
      * - Updates the user's password in the database
-     * 
      * - Invalidates all remaining password reset OTPs for the user
      * 
      * **Authentication Requirements:**
      * 
      * - No authentication required; open to users with valid OTP codes
-     * 
      * - User account must be active and verified
      * 
      * **Security Features:**
      * 
      * - OTP expiration (60 minutes)
-     * 
      * - Maximum 3 verification attempts per OTP
-     * 
      * - Single-use OTP codes
-     * 
      * - Secure password hashing (PBKDF2 with SHA-256)
-     * 
      * - Automatic cleanup of expired/used OTPs
-     * 
      * - Password validation enforced by validator
      * 
      * **Request Requirements:**
      * 
      * - Valid email address format
-     * 
      * - Valid OTP code (6-digit numeric)
-     * 
      * - New password meeting security requirements
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 400 Bad Request for invalid input or inactive account
-     * 
      * - Returns 401 Unauthorized for expired OTP
-     * 
      * - Returns 403 Forbidden for max attempts reached or unverified account
-     * 
      * - Returns 404 Not Found for no valid OTP found or user not found
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid input format, inactive account, or invalid OTP
-     * 
      * - AuthenticationException (401): OTP has expired
-     * 
      * - AuthorizationException (403): Maximum verification attempts reached or account not verified
-     * 
      * - NotFoundException (404): No valid OTP found or user not found
      * 
      * **Process Flow:**
@@ -1804,37 +1572,27 @@ export class Api<
      * This endpoint enables users to request a new verification code when:
      * 
      * - The original OTP wasn't received
-     * 
      * - The previous OTP has expired
-     * 
      * - There were issues with email delivery
-     * 
      * - Maximum attempts were reached on the previous OTP
      * 
      * **Request Requirements:**
      * 
      * - Valid email address format
-     * 
      * - Valid OTP purpose (EmailVerification, PasswordReset, TwoFactorAuthentication, AccountRecovery)
-     * 
      * - Account must be active
      * 
      * **Security Features:**
      * 
      * - Account active status validation
-     * 
      * - Automatic invalidation of existing OTPs for the specified purpose
-     * 
      * - New OTP generation with fresh expiration time
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status when OTP is resent
-     * 
      * - Returns 400 Bad Request for invalid email format or purpose
-     * 
      * - Returns 404 Not Found when user doesn't exist
-     * 
      * - Returns 403 Forbidden when user account is inactive
      * 
      * **Process Flow:**
@@ -1854,11 +1612,8 @@ export class Api<
      * **Supported OTP Purposes:**
      * 
      * - EmailVerification: For email address verification
-     * 
      * - PasswordReset: For password reset requests
-     * 
      * - TwoFactorAuthentication: For 2FA setup/verification
-     * 
      * - AccountRecovery: For account recovery processes
      *
      * @tags public::authentication
@@ -1892,43 +1647,32 @@ export class Api<
      * This endpoint performs enhanced authentication by:
      * 
      * - Validating credentials and password
-     * 
      * - Verifying the account is active and verified
-     * 
      * - Generating JWT token with appropriate user claims
-     * 
      * - Recording the login activity
      * 
      * **Authentication Requirements:**
      * 
      * - Valid email/userName and password combination
-     * 
      * - Account must be active and verified
      * 
      * **Security Features:**
      * 
      * - Password verification using secure hashing (bcrypt)
-     * 
      * - Login activity tracking
-     * 
      * - Basic JWT claims for public users operations
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with user info and JWT token on successful authentication
-     * 
      * - Returns 400 Bad Request for invalid email/userName or incorrect password
-     * 
      * - Returns 403 Forbidden when user account is inactive or disabled
-     * 
      * - Returns 404 Not Found when no user exists with the provided email/userName
      * 
      * **Error Handling:**
      * 
      * - AuthorizationException (403): Account inactive - user exists but account is disabled/suspended
-     * 
      * - BadRequestException (400): Invalid password - email/userName exists but password is incorrect
-     * 
      * - NotFoundException (404): User not found - no account exists with the provided email/userName.
      *
      * @tags public::authentication
@@ -1960,29 +1704,23 @@ export class Api<
      * This endpoint follows security best practices by:
      * 
      * - Always returning success to prevent user enumeration attacks
-     * 
      * - Only generating OTP for valid, active, and verified accounts
-     * 
      * - Silently handling cases where email doesn't exist or account is inactive
      * 
      * **Request Requirements:**
      * 
      * - Valid email address format
-     * 
      * - Email must belong to an existing, active, and verified account
      * 
      * **Security Features:**
      * 
      * - User enumeration protection (consistent response regardless of email existence)
-     * 
      * - Account status validation (active and verified)
-     * 
      * - OTP generation with expiration time
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status (always true for security) and the email address
-     * 
      * - Returns 400 Bad Request for invalid email format
      * 
      * **Process Flow:**
@@ -2026,71 +1764,48 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies user account is active and verified
-     * 
      * - Validates the current password against stored hash
-     * 
      * - Ensures new password is different from current password
-     * 
      * - Hashes the new password using secure algorithms
-     * 
      * - Updates the user's password in the database
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - Account must be verified (email confirmed)
-     * 
      * - Only visitor role users can change their password
      * 
      * **Security Features:**
      * 
      * - Current password verification for authorization
-     * 
      * - Prevention of reusing the same password
-     * 
      * - Secure password hashing (PBKDF2 with SHA-256)
-     * 
      * - Strong password validation enforced by validator
-     * 
      * - Account status validation before password change
      * 
      * **Request Requirements:**
      * 
      * - Valid old password for verification
-     * 
      * - New password meeting security requirements
-     * 
      * - User must be authenticated with valid JWT token
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with success status
-     * 
      * - Returns 400 Bad Request for invalid old password or same password
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive or unverified accounts
-     * 
      * - Returns 404 Not Found for user not found
-     * 
      * - Returns 409 Conflict for new password same as old
      * 
      * **Error Handling:**
      * 
      * - BadRequestException (400): Invalid old password or inactive account
-     * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Account not verified or insufficient permissions
-     * 
      * - NotFoundException (404): User not found
-     * 
      * - ConflictException (409): New password same as current password
      * 
      * **Process Flow:**
@@ -2146,73 +1861,51 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies user account is active and verified
-     * 
      * - Retrieves complete user information including roles and permissions
-     * 
      * - Fetches user avatar file information if available
-     * 
      * - Returns comprehensive user profile data
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - Account must be verified (email confirmed)
-     * 
      * - Only visitor role users can access their profile
      * 
      * **Returned Information:**
      * 
      * - Basic user details (ID, email, username, verification status)
-     * 
      * - User roles and associated permissions
-     * 
      * - Avatar file information (if available)
-     * 
      * - Account status and activity information
-     * 
      * - Authentication provider information (local/social)
      * 
      * **Security Features:**
      * 
      * - User can only access their own profile information
-     * 
      * - Account status validation before profile retrieval
-     * 
      * - Comprehensive permission and role information for authorization
-     * 
      * - Avatar file security through proper file service integration
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with complete user profile data
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive or unverified accounts
-     * 
      * - Returns 404 Not Found for user not found
      * 
      * **Error Handling:**
      * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Account not verified or insufficient permissions
-     * 
      * - NotFoundException (404): User not found
      * 
      * **Use Cases:**
      * 
      * - Display user profile information in client applications
-     * 
      * - Determine user permissions for UI/UX customization
-     * 
      * - Validate user account status and verification
-     * 
      * - Access avatar and display user information
      * 
      * **Process Flow:**
@@ -2258,75 +1951,52 @@ export class Api<
      * This endpoint performs the following operations:
      * 
      * - Validates JWT token authentication and extracts user ID
-     * 
      * - Verifies user account is active and verified
-     * 
      * - Validates uniqueness for email, username, and phone number if being updated
-     * 
      * - Updates user profile information selectively
-     * 
      * - Returns updated user profile data
      * 
      * **Authentication Requirements:**
      * 
      * - Valid JWT Bearer token required
-     * 
      * - Account must be active (not suspended/banned)
-     * 
      * - Account must be verified (email confirmed)
-     * 
      * - Only logged-in users can update their profile
      * 
      * **Updateable Information:**
      * 
      * - Email address (triggers re-verification and logout)
-     * 
      * - Username (must be unique across the system)
-     * 
      * - Phone number with country information
-     * 
      * - Country details (name, flag, ISO code, dial code)
      * 
      * **Security Features:**
      * 
      * - User can only update their own profile information
-     * 
      * - Account status validation before updates
-     * 
      * - Uniqueness validation for email, username, and phone
-     * 
      * - Email update triggers account re-verification
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with updated user profile data
-     * 
      * - Returns 401 Unauthorized for invalid/missing JWT token
-     * 
      * - Returns 403 Forbidden for inactive or unverified accounts
-     * 
      * - Returns 404 Not Found for user not found
-     * 
      * - Returns 409 Conflict for duplicate email/username/phone
      * 
      * **Error Handling:**
      * 
      * - AuthenticationException (401): Invalid JWT token
-     * 
      * - AuthorizationException (403): Account not verified or insufficient permissions
-     * 
      * - NotFoundException (404): User not found
-     * 
      * - ConflictException (409): Email, username, or phone already exists
      * 
      * **Use Cases:**
      * 
      * - Update user profile information in client applications
-     * 
      * - Change email address (requires re-verification)
-     * 
      * - Update contact information and location details
-     * 
      * - Modify username for personal branding
      * 
      * **Process Flow:**
@@ -2346,11 +2016,8 @@ export class Api<
      * **Important Notes:**
      * 
      * - Email updates reset verification status and force logout
-     * 
      * - Phone number updates include country information
-     * 
      * - Only provided fields are updated (partial updates supported)
-     * 
      * - All validations are performed before any updates.
      *
      * @tags public::profile
@@ -2389,47 +2056,34 @@ export class Api<
      * **Authentication Requirements:**
      * 
      * - User must be logged in (JWT token required)
-     * 
      * - Account must be active and verified
      * 
      * **Request Requirements:**
      * 
      * - Valid avatar URL (required)
-     * 
      * - URL must be accessible and point to a valid image
-     * 
      * - Maximum URL length: 2048 characters
      * 
      * **Avatar Management:**
      * 
      * - Previous avatar is automatically deleted when updating
-     * 
      * - New avatar is downloaded and stored in the system
-     * 
      * - Supports common image formats (JPEG, PNG, GIF, WebP)
-     * 
      * - Smart deduplication: if the same URL is provided again, no duplicate download occurs
      * 
      * **Response Codes:**
      * 
      * - Returns 200 OK with updated user information including new avatar
-     * 
      * - Returns 400 Bad Request for invalid avatar URL format
-     * 
      * - Returns 401 Unauthorized for unauthenticated requests
-     * 
      * - Returns 403 Forbidden for inactive or unverified accounts
-     * 
      * - Returns 404 Not Found when user doesn't exist
      * 
      * **Security Features:**
      * 
      * - Only the authenticated user can update their own avatar
-     * 
      * - Account verification required (verified accounts only)
-     * 
      * - URL validation to ensure proper format
-     * 
      * - Automatic cleanup of old avatar files
      * 
      * **Process Flow:**

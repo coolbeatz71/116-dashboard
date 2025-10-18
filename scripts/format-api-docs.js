@@ -2,60 +2,63 @@ import { readFileSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const apiFilePath = join(__dirname, '../src/shared/api/generated/116.api.ts');
 
-const swaggerUrl = 'http://localhost:5025/swagger/v1/swagger.json';
-const swaggerResponse = await fetch(swaggerUrl);
-const swagger = await swaggerResponse.json();
-
-const descriptionMap = new Map();
+const swagger = await fetch('http://localhost:5025/swagger/v1/swagger.json').then(r => r.json());
 
 const operations = Object.values(swagger.paths)
     .flatMap(methods => Object.values(methods))
     .filter(op => op.operationId && op.description);
 
-// Format each operation’s description to clean extra spaces and newlines before saving it
-operations.forEach(operation => {
-    const lines = operation.description.split('\n');
+function formatDescription(description) {
+    const lines = description.split('\n').map(l => l.trim());
+    const formatted = [];
+    let prevEmpty = true, prevBullet = false, prevHeader = false;
 
-    const { formatted } = lines.reduce((acc, line) => {
-        const trimmed = line.trim();
+    for (const line of lines) {
+        const isEmpty = !line;
+        const isBullet = line.startsWith('-');
+        const isHeader = line.endsWith(':') || line.endsWith(':**');
+        const isMarkdownHeader = line.startsWith('**') && line.endsWith(':**') && !isBullet;
+        const isBoldBullet = isBullet && line.includes('**');
 
-        if (acc.formatted.length === 0 && trimmed === '') return acc;
+        if (!formatted.length && isEmpty) continue;
 
-        // Preserve blank lines only when transitioning from content to empty lines
-        if (trimmed === '' && !acc.prevWasEmpty) {
-            acc.formatted.push('');
-            acc.prevWasEmpty = true;
-        } else if (trimmed !== '') {
-            acc.formatted.push(trimmed);
-            acc.prevWasEmpty = false;
+        if (isEmpty) {
+            if (prevHeader || (!prevBullet && !prevEmpty)) formatted.push('');
+            prevEmpty = true;
+            continue;
         }
 
-        return acc;
-    }, {
-        formatted: [],
-        prevWasEmpty: true
-    });
+        const needsBlank = formatted.length &&
+            ((isMarkdownHeader && !prevEmpty) || (isHeader && !isBoldBullet && prevBullet));
 
-    descriptionMap.set(operation.operationId, formatted.join('\n     * '));
-});
+        if (needsBlank) formatted.push('');
+        formatted.push(line);
+
+        prevEmpty = false;
+        prevBullet = isBullet;
+        prevHeader = isHeader;
+    }
+
+    while (formatted.at(-1) === '') formatted.pop();
+    return formatted.join('\n     * ');
+}
+
+const descriptionMap = new Map(
+    operations.map(op => [op.operationId, formatDescription(op.description)])
+);
 
 let content = readFileSync(apiFilePath, 'utf-8');
 
-// Replace descriptions in generated file with formatted ones from swagger.json
 content = content.replace(
     /\/\*\*\s*\n\s*\* @description (.+?)\n\s*\*\s*\n\s*\* @tags (.+?)\n\s*\* @name (\w+)/gs,
-    (_, description, tags, operationId) => {
-        const formattedDesc = descriptionMap.get(operationId) || description;
+    (_, desc, tags, operationId) => {
+        const formattedDesc = descriptionMap.get(operationId) || desc;
         return `/**\n     * @description ${formattedDesc}\n     *\n     * @tags ${tags}\n     * @name ${operationId}`;
     }
 );
 
 writeFileSync(apiFilePath, content, 'utf-8');
-
-// \x1b[32m = green color, \x1b[0m = reset color
 console.log('\x1b[32m✔\x1b[0m API documentation formatted successfully');
